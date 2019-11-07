@@ -1,0 +1,160 @@
+<body>
+  <app-nav-menu></app-nav-menu>
+  <!--<div class="container">
+    <router-outlet></router-outlet>
+  </div>-->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" />
+  <div class="container">
+    <div *ngIf="VisType">
+      <div *ngIf="laster">
+        Laster kategori...
+      </div>
+      <div *ngFor="let type of alleTyper">
+        <button (click)="hentalleSporsmal(type.TypeId)" type="button" class="btn btn-warning btn-lg btn-block">
+          {{type.type}}
+        
+        </button><br />
+        <br />
+      </div>
+      <br />
+
+
+
+    </div>
+    <button class='btn btn-primary btn-lg btn-block' (click)='registrerSp()'>Spør</button>
+  </div>
+
+  <!---------------------------- Billett-------------->
+  <div class="container ">
+    <div *ngIf="VisBilSp">
+      <h1>Billetter</h1>
+      <div *ngIf="laster">
+        Laster...
+      </div>
+      
+      <div *ngFor="let etSp of alleSporsmal">
+
+        
+          <button (click)="visBilSpView(etSp.Id)" type="button" class="btn btn-default btn-lg btn-block">
+            {{etSp.sporsmal}}
+
+          </button>
+     
+
+      </div>
+     
+      
+    </div>
+
+    <div *ngIf="visSvar">
+      <h2>{{etSv.svar}}</h2>
+      <button (click)="stemSpOpp(etS.Id)"> Opp</button>
+      <button (click)="stemSpned(etS.Id)"> ned</button>
+    </div>
+    <button class='btn btn-primary' (click)='registrerSp()'>Spør</button>
+    <button class="btn btn-default" (click)="tilbakeTilListe()">Tilbake</button>
+  </div>
+
+
+  <!---------------------------- Endring-------------->
+  <!--
+
+  <div class="container ">
+    <div *ngIf="VisEnSp">
+
+      <h1>Endring</h1>
+      <div *ngIf="laster">
+        Laster spørsmål...
+      </div>
+
+      <h1>Laster...</h1>
+      <div *ngFor="let sp of alleSpørsmål">
+        <button (click)="visBilSpView(sp.Id)" type="button" class="btn btn-info">
+          {{etSp.sporsmal}}
+        </button>
+      </div>
+
+      <span class=""> Rating</span> {{etSp.rating}}
+      <span class=""> Antall stemmer</span> {{etSp.stemmer}}
+    </div>
+
+    <div *ngIf="visSvar">
+      <h2>{{etSv.svar}}</h2>
+      <button (click)="stemSpOpp(etS.Id)"> Opp</button>
+      <button (click)="stemSpned(etS.Id)"> ned</button>
+    </div>
+
+  </div>
+
+  -->
+  <!---------------------------- Ruter-------------->
+  <!-->
+  <div class="container ">
+    <div *ngIf="ViRuSp">
+
+      <h1>Ruter</h1>
+      <div *ngIf="laster">
+        Laster spørsmål...
+      </div>
+
+      <h1>Laster...</h1>
+      <div *ngFor="let sp of alleSpørsmål">
+        <button (click)="visBilSpView(sp.Id)" type="button" class="btn btn-info">
+          {{etSp.sporsmal}}
+        </button>
+      </div>
+      <span class=""> Rating</span> {{etSp.rating}}
+      <span class=""> Antall stemmer</span> {{etSp.stemmer}}
+    </div>
+
+    <div *ngIf="visSvar">
+      <h2>{{etSv.svar}}</h2>
+      <button (click)="stemSpOpp(etS.Id)"> Opp</button>
+      <button (click)="stemSpned(etS.Id)"> ned</button>
+    </div>
+
+  </div>
+
+
+  -->
+  <!--
+
+   <div class="col-sm-4 col-sm-offset-2" *ngIf="visSkjema">
+     <form [formGroup]="skjema" (ngSubmit)="vedSubmit()">
+       <input class="form-control" formControlName="id" type="hidden" />
+       <div>
+         <select data-val="true" class="form-control" id="st" style="font-family:'FontAwesome',sans-serif;height: 60px; width: 100%; border-bottom:3px solid black;">
+           <option value="fas fa-search" disabled selected>Hvilke Emne</option>
+
+           <option *ngFor="let type of alleTyper" formControlName="TypeId">
+
+             {{type.type}}
+
+           </option>
+
+         </select>
+       </div>
+
+       <div class="form-group">
+         <h3>Hva kan vi hjelpe deg med?</h3>
+         <input class="form-control" formControlName="spørmål" />
+         <p class="alert alert-warning" [hidden]="skjema.controls.fornavn.valid || (skjema.controls.fornavn.pristine && !submitted)">
+           Feltet må fylles ut
+         </p>
+       </div>
+
+
+
+       <div class="form-group">
+
+         <button type="submit" *ngIf="skjemaStatus=='Registrere'" [disabled]="!skjema.valid" class="btn btn-primary">Gå videre</button>
+         <button class="btn btn-default" (click)="tilbakeTilListe()">Tilbake</button>
+       </div>
+     </form>
+
+   </div>  -->
+</body>
