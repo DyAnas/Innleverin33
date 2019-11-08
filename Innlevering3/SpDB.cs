@@ -16,22 +16,22 @@ namespace Innlevering3
     {
         _context = context;
     }
-    public List<sporsmals> hentalleSpørsmål()
+    public List<sporsmals> hentalleSpørsmål(int TypeId)
     {
-        List<sporsmals> spørsmål =_context.sporsmals.Include(s=> s.type).Select(s=> new sporsmals
+        List<sporsmals> spørsmål = new List<sporsmals>();
+        var alleSpørmål = _context.sporsmals.Where(k => k.type.TypeId == TypeId).ToList();
+        foreach (DBSporsmal s in alleSpørmål)
+        {
+            spørsmål.Add(new sporsmals
             {
                 Id = s.Id,
                 sporsmal = s.sporsmal,
                 rating = s.rating,
                 svar = s.svar,
-                stemmer=s.stemmer,
-                TypeId=s.type.TypeId,
-                type=s.type.type
-                
 
+
+            });
         }
-        ).ToList();
-       
 
         return spørsmål;
     }
@@ -43,8 +43,12 @@ namespace Innlevering3
                 TypeId=k.TypeId,
                 type=k.type
             }
-              
-            ).ToList() ;
+            
+            
+            
+            
+            ).ToList()
+                ;
 
         return type;
 

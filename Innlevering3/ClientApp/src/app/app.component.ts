@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { sporsmal, Isporsmal } from './Sporsmal';
-import { type, Itype } from './Type';
+
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 
@@ -9,26 +9,31 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html'
+    templateUrl: './app.component.html',
+  
 })
 export class AppComponent {
     title = 'app';
     VisType: boolean;
     laster: boolean;
     alleTyper: Array<sporsmal>;
-    enType: type;
+ 
     VisBilSp: boolean;
     etSp: sporsmal;
     alleSporsmal: Array<sporsmal>;
-    etSv: any;
+    etSv: sporsmal;
     visSvar: boolean;
     VisEnSp: boolean;
     visSkjema: boolean;
     ViRuSp: boolean;
     skjemaStatus: string;
     skjema: FormGroup;
-    TypeId: sporsmal;
+    TypeId: string;
 
+    
+
+
+    item: sporsmal;
 
     constructor(private _http: HttpClient, private fb: FormBuilder) {
         this.skjema = fb.group({
@@ -42,11 +47,13 @@ export class AppComponent {
 
     ngOnInit() {
         this.laster = true;
-        this.visSkjema = true;
+        this.visSkjema = false;
         this.hentAlletyper();
         this.VisType = true;
         this.VisBilSp = false;
-      
+        this.ViRuSp = false;
+        this.visSvar = true;
+    
     }
     hentAlletyper() {
         this._http.get<Isporsmal[]>("api/Svar/")
@@ -55,54 +62,75 @@ export class AppComponent {
                     
                     this.alleTyper = typer;
                     this.laster = false;
-                    
+                    this.VisBilSp = false;
+                    this.ViRuSp = false;
                 },
                 error => alert(error)
             );
     };
 
-    hentalleSporsmal(TypeId:number) {
-    
-        this._http.get<Isporsmal[]>("api/Sporsmal/" )
+    hentalleSporsmal(i:number) {
+        i =i+ 1;
+        this._http.get<Isporsmal[]>("api/Sporsmal/" + i)
             .subscribe(
                 sporsmal => {
                     this.alleSporsmal = sporsmal;
-                   
+                 
                    
                   //  this.alleTyper = sp;
                
-                    //if () {
+                    if (i ==1) {
                     
-                       /* this.laster = true;
+                      
                         this.VisEnSp = false;
-                        this.ViRuSp = false;*/
-                  //  }
-                /*    else if (TypeId == 2) {
-                        this.VisEnSp = true;
-                        this.VisBilSp = false;
                         this.ViRuSp = false;
+                        this.visSkjema = false;
+                        this.VisBilSp = true;
+                        this.VisType = false;
+                        this.visSvar = false;
+
                     }
-                    else if (TypeId == 3)
-                        this.ViRuSp = true;
-                    this.VisEnSp = false;
-                    this.VisBilSp = false;*/
+                   else if (i == 2) {
+                        this.VisType = false;
+                        this.VisEnSp = true;
+                        this.ViRuSp = false;
+                        this.visSkjema = false;
+                        this.VisBilSp = false;
+                        this.visSvar = false;
+                        
+                    }
+                    else if (i == 3)
+                    this.VisEnSp = true;
+                    this.ViRuSp = true;
+                    this.visSkjema = false;
+                    this.VisBilSp = false
+                    this.VisType = false;
+                    this.visSvar = false;
 
                 },
                 error => alert(error)
         );
         this.laster = false;
         this.VisBilSp = true;
-        this.VisType = false;
+        this.VisType = true;
     }
-    hentSvar(Id: number) {
-        this._http.get("api/Svar/" + Id)
+   /*hentSvar(i: number) {
+       i = 0;
+       i = i + 1;
+        this._http.get("api/Svar/" + i)
             .subscribe(
                 sp => {
-                    this.etSv.svar = sp;
+
+                    this.etSv.svar = sp.toString();
                     this.visSvar = true;
+                    
                 }
             );
+    }*/
+    hentSvar() {
+        this.visSvar = true;
     }
+
 
     visTypeView() {
         this.laster = true;
@@ -120,6 +148,14 @@ export class AppComponent {
         else {
             alert("Feil i applikasjonen!");
         }
+    }
+    registrerSp() {
+        this.visSkjema = true;
+        this.VisType = false;
+        this.VisEnSp = false;
+        this.VisBilSp = false;
+        this.ViRuSp = false;
+
     }
     /*
     lagresp() {
@@ -143,12 +179,14 @@ export class AppComponent {
                 },
                 error => alert(error)
             );
-    };
+    };*/
     tilbakeTilListe() {
         this.VisType = true;
         this.visSkjema = false;
         this.VisBilSp = false;
-    }*/
+        this.VisBilSp = false;
+        this.ViRuSp = false;
+    }
 
     stemSpOpp(Id: number) {
         this._http.get("api/Sporsmal/" + Id)

@@ -18,22 +18,20 @@ namespace Innlevering3.Controllers
                 _context = context;
             }
 
+        
+            [HttpGet("{i}")]
+            public JsonResult GetAllespørsmål(int i)
+            {
+                var db = new SpDB(_context);
+                var ut = db.hentalleSpørsmål(i);
 
-        [HttpGet()]
-        public JsonResult Get()
-        {
-            var db = new SpDB(_context);
-            List<sporsmals> ut = db.hentalleSpørsmål();
+                return Json(ut);
+            }
 
-            return Json(ut);
-        }
-    
-           
-
-   
+ 
 
 
-        [HttpGet("[action]/{Id}")]
+            [HttpGet("[action]/{id}")]
             public JsonResult Tommelopp(int id)
             {
                 var db = new SpDB(_context);
@@ -41,7 +39,7 @@ namespace Innlevering3.Controllers
 
                 return Json(result);
             }
-            [HttpGet("[action]/{Id}")]
+            [HttpGet("[action]/{id}")]
             public JsonResult Tommelned(int id)
             {
                 var db = new SpDB(_context);
@@ -50,7 +48,7 @@ namespace Innlevering3.Controllers
                 return Json(result);
             }
 
-            [HttpPost("{Id}")]
+            [HttpPost("{id}")]
             public JsonResult Post(int id, [FromBody]sporsmals innSp)
             {
 
