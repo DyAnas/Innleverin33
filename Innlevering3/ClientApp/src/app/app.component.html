@@ -5,12 +5,25 @@
   </div>-->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   <script>
-$('.testBtn').on("click",function(){  
-  //$('button').not(this).removeClass();
-  $(this).toggleClass('active');
+(function(document, $) {
+
+  $(function() {
+    $(document).on('click', '[disable-on-click], .disable-on-click', function() {
+      var disableText = this.getAttribute("data-disable-text") || 'Processing...';
+
+      if(this.form) {
+        this.form.submit();
+      }
+
+      this.disabled = true;
+
+      if(this.tagName === 'BUTTON') {
+        this.innerHTML = disableText;
   
-});
-    .active{background-color:red;}
+    });
+  });
+
+})(document, jQuery);
   </script>
 
   <style>
@@ -221,6 +234,7 @@ $('.testBtn').on("click",function(){
     <div *ngIf="VisBilSp" class="tab-content" id="faq-tab-content">
       <div class="tab-pane show active" id="tab1" role="tabpanel" aria-labelledby="tab1">
         <div class="accordion" id="accordion-tab-1">
+
           <h1>Billetter</h1>
           <div *ngFor="let etSp of alleSporsmal; index as i" class="card">
             <div class="card-header" id="accordion-tab-1-heading-1">
@@ -231,10 +245,11 @@ $('.testBtn').on("click",function(){
             <div *ngIf="visSvar" class="collapse show" id="accordion-tab-1-content-1" aria-labelledby="accordion-tab-1-heading-1" data-parent="#accordion-tab-1">
               <div class="card-body">
                 <p>{{etSp.svar}}</p>
+                <button (click)="stemSpOpp(i)" class="btn btn-primary glyphicon glyphicon-thumbs-up" disable-on-click data-disable-text="Saving..."><i class="material-icons">thumb_up</i></button>
+                <button (click)="stemSpned(i)" class="btn btn-danger glyphicon glyphicon-thumbs-down" disable-on-click data-disable-text="Saving..."><i class="material-icons">thumb_down</i></button>
 
-                <span (click)="stemSpOpp(i)" id="testBtn" class="btn btn-success glyphicon glyphicon-thumbs-up"> <i class="material-icons">thumb_up</i></span>
-                <span (click)="stemSpned(i)" id="testBtnDown" class="btn btn-success glyphicon glyphicon-thumbs-down"><i class="material-icons">thumb_down</i></span>
-
+      
+                <br />
                 <label>Poeng: </label><p>{{etSp.rating}}</p>
                 <label>Antall stemmer: </label><p>{{etSp.stemmer}}</p>
 
@@ -263,8 +278,9 @@ $('.testBtn').on("click",function(){
             <div *ngIf="visSvar" class="collapse show" id="accordion-tab-1-content-1" aria-labelledby="accordion-tab-1-heading-1" data-parent="#accordion-tab-1">
               <div class="card-body">
                 <p>{{etSp.svar}}</p>
-                <button class="iconic iconic-thumb-up" title="thumb up" aria-hidden="false"></button>
-                <button class="iconic iconic-thumb-down-2x" title="thumb down" aria-hidden="true"></button>
+
+                <span (click)="stemSpOpp(i)" id="testBtn" class="btn btn-success glyphicon glyphicon-thumbs-up"> <i class="material-icons">thumb_up</i></span>
+                <span (click)="stemSpned(i)" id="testBtnDown" class="btn btn-success glyphicon glyphicon-thumbs-down"><i class="material-icons">thumb_down</i></span>
 
               </div>
             </div>

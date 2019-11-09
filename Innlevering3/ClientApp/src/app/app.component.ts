@@ -206,14 +206,17 @@ export class AppComponent {
         this._http.put("api/Sporsmal/", body, { headers: headers }).subscribe
            ( ()=> {
               // this.hentalleSporsmal(poeng.TypeId);
-               if (poeng.Id < 5) {
-                   this.VisBilSp = true;
-               } else if (poeng.Id > 4 && poeng.Id < 9) {
-                   this.VisEnSp = true;
+               if (poeng.Id < 6) {
+                   this.hentalleSporsmal(0);
+               } else if (poeng.Id > 5 && poeng.Id < 8) {
+                
+                   this.hentalleSporsmal(1);
                }
                else if (poeng.Id > 8 && poeng.Id < 12) {
-                   this.ViRuSp = true;
+             
+                   this.hentalleSporsmal(2);
                } else {
+
                    this.VisType = true;
                }
                
@@ -230,23 +233,26 @@ export class AppComponent {
         i = i + 1;
         const poeng = new sporsmal();
         poeng.Id = i;
-        poeng.TypeId = 1;
+        
         const body: string = JSON.stringify(poeng);
         const headers = new HttpHeaders({ "Content-Type": "application/json" });
 
         this._http.put("api/Svar/", body, { headers: headers }).subscribe
             (() => {
               // this.hentalleSporsmal(poeng.TypeId);
-                if (poeng.Id < 5) {
-                    this.VisBilSp = true;
-                } else if (poeng.Id > 4 && poeng.Id < 9) {
-                    this.VisEnSp = true;
-                }
-                else if (poeng.Id > 8 && poeng.Id < 12) {
-                    this.ViRuSp = true;
-                } else {
-                    this.VisType = true;
-                }
+                 if (poeng.Id < 6) {
+                   this.hentalleSporsmal(0);
+               } else if (poeng.Id > 5 && poeng.Id < 8) {
+                
+                   this.hentalleSporsmal(1);
+               }
+               else if (poeng.Id > 8 && poeng.Id < 12) {
+             
+                   this.hentalleSporsmal(2);
+               } else {
+
+                   this.VisType = true;
+               }
 
 
 
