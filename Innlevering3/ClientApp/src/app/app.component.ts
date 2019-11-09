@@ -205,8 +205,17 @@ export class AppComponent {
 
         this._http.put("api/Sporsmal/", body, { headers: headers }).subscribe
            ( ()=> {
-               this.hentalleSporsmal(poeng.TypeId);
-               this.VisEnSp = true;
+              // this.hentalleSporsmal(poeng.TypeId);
+               if (poeng.Id < 5) {
+                   this.VisBilSp = true;
+               } else if (poeng.Id > 4 && poeng.Id < 9) {
+                   this.VisEnSp = true;
+               }
+               else if (poeng.Id > 8 && poeng.Id < 12) {
+                   this.ViRuSp = true;
+               } else {
+                   this.VisType = true;
+               }
                
                 
                this.visSvar = false;
@@ -217,4 +226,35 @@ export class AppComponent {
            
     }
 
+    stemSpned(i: number) {
+        i = i + 1;
+        const poeng = new sporsmal();
+        poeng.Id = i;
+        poeng.TypeId = 1;
+        const body: string = JSON.stringify(poeng);
+        const headers = new HttpHeaders({ "Content-Type": "application/json" });
+
+        this._http.put("api/Svar/", body, { headers: headers }).subscribe
+            (() => {
+              // this.hentalleSporsmal(poeng.TypeId);
+                if (poeng.Id < 5) {
+                    this.VisBilSp = true;
+                } else if (poeng.Id > 4 && poeng.Id < 9) {
+                    this.VisEnSp = true;
+                }
+                else if (poeng.Id > 8 && poeng.Id < 12) {
+                    this.ViRuSp = true;
+                } else {
+                    this.VisType = true;
+                }
+
+
+
+                this.visSvar = false;
+                console.log("ferdig post-api/Svar");
+            },
+                error => alert(error),
+            );
+
+    }
 }

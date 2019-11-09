@@ -28,6 +28,8 @@ namespace Innlevering3
                 sporsmal = s.sporsmal,
                 rating = s.rating,
                 svar = s.svar,
+                stemmer=s.stemmer,
+               
 
 
             });
@@ -130,9 +132,9 @@ namespace Innlevering3
 
     }
 
-    public bool TommelNedsp(int id)
+    public bool TommelNedsp(sporsmals innsporsmals)
     {
-        var sp = _context.sporsmals.FirstOrDefault(s => s.Id == id);
+        var sp = _context.sporsmals.FirstOrDefault(s => s.Id == innsporsmals.Id);
         if (sp == null)
         {
             return false;

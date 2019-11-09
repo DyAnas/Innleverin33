@@ -46,6 +46,19 @@ namespace Innlevering3.Controllers
             
             return Json("Kunne ike lagre spørsmål");
         }
+        [HttpPut]
+        public JsonResult Tommelned([FromBody]sporsmals innsporsmal)
+        {
+            var db = new SpDB(_context);
+            bool result = db.TommelNedsp(innsporsmal);
+            if (result)
+            {
+                return Json("OK");
+            }
+
+            return Json("Kunne ikke endre kunden i DB");
+        }
+
 
     }
 }

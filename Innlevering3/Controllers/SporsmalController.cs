@@ -44,15 +44,7 @@ namespace Innlevering3.Controllers
             return Json("Kunne ikke endre kunden i DB");
     
 }
-            [HttpGet("[action]/{id}")]
-            public JsonResult Tommelned(int id)
-            {
-                var db = new SpDB(_context);
-                bool result = db.TommelNedsp(id);
-
-                return Json(result);
-            }
-
+  
             
 
 
