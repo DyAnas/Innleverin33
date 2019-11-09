@@ -30,5 +30,22 @@ namespace Innlevering3.Controllers
             var ut = db.hentEtSvar(id);
             return Json(ut);
         }
+
+        [HttpPost]
+        public JsonResult Post([FromBody]sporsmals innSp)
+        {
+
+                var db = new SpDB(_context);
+                bool Ok = db.lagreSpørsmål(innSp);
+                if (Ok)
+                {
+                    return Json("OK");
+
+                }
+
+            
+            return Json("Kunne ike lagre spørsmål");
+        }
+
     }
 }

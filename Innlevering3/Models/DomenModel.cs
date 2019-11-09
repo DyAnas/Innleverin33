@@ -20,8 +20,8 @@ namespace Innlevering3.Models
         [Required]
         [RegularExpression("^[0-9]$")]
         public int stemmer { get; set; }
-        [Required]
-        [RegularExpression("^[0-9]$")]
+       
+        
         public int TypeId { get; set; }
         [Required]
         [RegularExpression("^[a-zæøåA-ZÆØÅ. \\-]{2,40}$")]

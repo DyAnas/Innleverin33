@@ -19,7 +19,7 @@ namespace Innlevering3
     public List<sporsmals> hentalleSpørsmål(int TypeId)
     {
         List<sporsmals> spørsmål = new List<sporsmals>();
-        var alleSpørmål = _context.sporsmals.Where(k => k.type.TypeId == TypeId).ToList();
+        var alleSpørmål = _context.sporsmals.Where(k => k.type.TypeId == TypeId).OrderByDescending(k => k.rating)   .ToList();
         foreach (DBSporsmal s in alleSpørmål)
         {
             spørsmål.Add(new sporsmals
@@ -64,24 +64,27 @@ namespace Innlevering3
         }
         return null;
     }
-    public bool lagreSpørsmål(int TypeId, sporsmals innspørsmål)
+    public bool lagreSpørsmål( sporsmals innspørsmål)
     {
 
         var nySpørsmål = new DBSporsmal()
         {
-
+           // Id = innspørsmål.Id,
             sporsmal = innspørsmål.sporsmal,
             stemmer = 0,
             rating = 0,
-            svar = ""
+            svar = "",
+            
+
         };
-        DBType funntype = _context.TypeSporsmal.Find(TypeId);
+        DBType funntype = _context.TypeSporsmal.Find(innspørsmål.TypeId);
         if (funntype == null)
         {
             return false;
         }
 
-        nySpørsmål.type.TypeId = funntype.TypeId;
+        nySpørsmål.type= funntype;
+           
         try
         {
             _context.sporsmals.Add(nySpørsmål);
@@ -105,9 +108,9 @@ namespace Innlevering3
 
 
 
-    public bool TommelOppSp(int id)
+    public bool TommelOppSp(sporsmals innsporsmals)
     {
-        var sp = _context.sporsmals.FirstOrDefault(s => s.Id == id);
+       DBSporsmal sp = _context.sporsmals.FirstOrDefault(s => s.Id == innsporsmals.Id);
         if (sp == null)
         {
             return false;

@@ -31,14 +31,19 @@ namespace Innlevering3.Controllers
  
 
 
-            [HttpGet("[action]/{id}")]
-            public JsonResult Tommelopp(int id)
+            [HttpPut]
+            public JsonResult Tommelopp( [FromBody]sporsmals innsporsmal)
             {
                 var db = new SpDB(_context);
-                bool result = db.TommelOppSp(id);
-
-                return Json(result);
+                bool result = db.TommelOppSp(innsporsmal);
+            if (result)
+            {
+                return Json("OK");
             }
+        
+            return Json("Kunne ikke endre kunden i DB");
+    
+}
             [HttpGet("[action]/{id}")]
             public JsonResult Tommelned(int id)
             {
@@ -48,24 +53,7 @@ namespace Innlevering3.Controllers
                 return Json(result);
             }
 
-            [HttpPost("{id}")]
-            public JsonResult Post(int id, [FromBody]sporsmals innSp)
-            {
-
-                if (ModelState.IsValid)
-                {
-                    var db = new SpDB(_context);
-                    bool Ok = db.lagreSpørsmål(id, innSp);
-                    if (Ok)
-                    {
-                        return Json("OK");
-
-                    }
-
-                }
-                return Json("Kunne ike lagre spørsmål");
-            }
-
+            
 
 
         }

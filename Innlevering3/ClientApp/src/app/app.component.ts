@@ -17,7 +17,7 @@ export class AppComponent {
     VisType: boolean;
     laster: boolean;
     alleTyper: Array<sporsmal>;
- 
+  
     VisBilSp: boolean;
     etSp: sporsmal;
     alleSporsmal: Array<sporsmal>;
@@ -29,19 +29,20 @@ export class AppComponent {
     skjemaStatus: string;
     skjema: FormGroup;
     TypeId: string;
-
+    rating: number;
     
 
 
-    item: sporsmal;
 
     constructor(private _http: HttpClient, private fb: FormBuilder) {
         this.skjema = fb.group({
             Id: [""],
             sporsmal: [null, Validators.compose([Validators.required, Validators.pattern("^[a-zøæåA-ZØÆÅ. \\-]{2,200}$")])],
-            svar: [null, Validators.compose([Validators.required, Validators.pattern("^[a-zøæåA-ZØÆÅ. \\-]{2,200}$")])],
-            rating: [null, Validators.compose([Validators.required, Validators.pattern("^[0-9]$")])],
-            stemmer: [null, Validators.compose([Validators.required, Validators.pattern("^[0-9]$")])],
+            svar: [""],
+            rating: [0],
+            TypeId: [""],
+            stemmer: [0],
+            type: [""],
         });
     }
 
@@ -53,6 +54,7 @@ export class AppComponent {
         this.VisBilSp = false;
         this.ViRuSp = false;
         this.visSvar = true;
+        this.VisEnSp = false;
     
     }
     hentAlletyper() {
@@ -75,13 +77,10 @@ export class AppComponent {
             .subscribe(
                 sporsmal => {
                     this.alleSporsmal = sporsmal;
-                 
-                   
-                  //  this.alleTyper = sp;
-               
-                    if (i ==1) {
-                    
-                      
+                    this.laster = false;
+                    if (i == 1) {
+
+
                         this.VisEnSp = false;
                         this.ViRuSp = false;
                         this.visSkjema = false;
@@ -90,29 +89,28 @@ export class AppComponent {
                         this.visSvar = false;
 
                     }
-                   else if (i == 2) {
+                    else if (i == 2) {
                         this.VisType = false;
                         this.VisEnSp = true;
                         this.ViRuSp = false;
                         this.visSkjema = false;
                         this.VisBilSp = false;
                         this.visSvar = false;
-                        
+
                     }
-                    else if (i == 3)
-                    this.VisEnSp = true;
+                    else if (i == 3) {
+                    this.VisEnSp = false;
                     this.ViRuSp = true;
                     this.visSkjema = false;
                     this.VisBilSp = false
                     this.VisType = false;
                     this.visSvar = false;
-
+                    }
                 },
                 error => alert(error)
         );
-        this.laster = false;
-        this.VisBilSp = true;
-        this.VisType = true;
+     
+       
     }
    /*hentSvar(i: number) {
        i = 0;
@@ -139,10 +137,10 @@ export class AppComponent {
         this.laster = true;
     }
 
-    vedSubmit() {
-        if (this.skjemaStatus == "Registrere") {
+   vedSubmit() {
+       if (this.skjemaStatus == "Registrere") {
 
-            //this.lagresp();
+             this.lagresp();
         }
 
         else {
@@ -155,47 +153,68 @@ export class AppComponent {
         this.VisEnSp = false;
         this.VisBilSp = false;
         this.ViRuSp = false;
+        this.skjema.markAsPristine();
+        this.hentAlletyper();
+        this.skjemaStatus = "Registrere";
 
     }
-    /*
+
+  
+
     lagresp() {
+        
         var sp = new sporsmal();
-        sp.sporsmal = this.skjema.value.spørmål;
+        
+        sp.sporsmal = this.skjema.value.sporsmal;
         sp.rating = 0;
         sp.stemmer = 0;
-        sp.svar = "";
-        sp.TypeId = this.skjema.value.TypeId;
-
+        sp.svar = " ";
+      sp.TypeId = this.skjema.value.TypeId ;
+        
         const body: string = JSON.stringify(sp);
 
         const headers = new HttpHeaders({ "Content-Type": "application/json" })
-        this._http.post("api/Sporsmal", body, { headers: headers })
+        this._http.post("api/Svar" , body, { headers: headers })
             .subscribe(
                 () => {
-                    this.hentalleSporsmal(TypeId);
+                    this.hentAlletyper();
                     this.visSkjema = false;
                     this.VisType = true;
-                    console.log("ferdig post-api/Sporsmal");
+                   
+                    console.log("ferdig post-api/Svar");
                 },
                 error => alert(error)
             );
-    };*/
+    };
     tilbakeTilListe() {
         this.VisType = true;
         this.visSkjema = false;
         this.VisBilSp = false;
-        this.VisBilSp = false;
+        this.VisEnSp = false;
         this.ViRuSp = false;
+
     }
 
-    stemSpOpp(Id: number) {
-        this._http.get("api/Sporsmal/" + Id)
-            .subscribe(
-                returData => {
-                  //  let res = returData.json();
+    stemSpOpp(i: number) {
+        i = i + 1;
+        const poeng = new sporsmal();
+        poeng.Id = i;
+        poeng.TypeId = 1;
+        const body: string = JSON.stringify(poeng);
+        const headers = new HttpHeaders({ "Content-Type": "application/json" });
 
-                }
-            )
+        this._http.put("api/Sporsmal/", body, { headers: headers }).subscribe
+           ( ()=> {
+               this.hentalleSporsmal(poeng.TypeId);
+               this.VisEnSp = true;
+               
+                
+               this.visSvar = false;
+               console.log("ferdig post-api/Sporsmal");
+           },
+               error => alert(error),
+           );
+           
     }
 
 }
