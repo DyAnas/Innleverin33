@@ -8,21 +8,21 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 
 @Component({
-  selector: 'app-root',
+    selector: 'app-root',
     templateUrl: './app.component.html',
-  
+
 })
 export class AppComponent {
     title = 'app';
     VisType: boolean;
     laster: boolean;
     alleTyper: Array<sporsmal>;
-  
+
     VisBilSp: boolean;
     etSp: sporsmal;
     alleSporsmal: Array<sporsmal>;
     etSv: sporsmal;
-    visSvar: boolean;
+    visSvar: number;
     VisEnSp: boolean;
     visSkjema: boolean;
     ViRuSp: boolean;
@@ -30,7 +30,9 @@ export class AppComponent {
     skjema: FormGroup;
     TypeId: string;
     rating: number;
-    
+    bil: boolean;
+    en: boolean;
+    rut: boolean;
 
 
 
@@ -53,15 +55,15 @@ export class AppComponent {
         this.VisType = true;
         this.VisBilSp = false;
         this.ViRuSp = false;
-        this.visSvar = true;
+        // this.visSvar = true;
         this.VisEnSp = false;
-    
+
     }
     hentAlletyper() {
         this._http.get<Isporsmal[]>("api/Svar/")
             .subscribe(
                 typer => {
-                    
+
                     this.alleTyper = typer;
                     this.laster = false;
                     this.VisBilSp = false;
@@ -71,8 +73,8 @@ export class AppComponent {
             );
     };
 
-    hentalleSporsmal(i:number) {
-        i =i+ 1;
+    hentalleSporsmal(i: number) {
+        i = i + 1;
         this._http.get<Isporsmal[]>("api/Sporsmal/" + i)
             .subscribe(
                 sporsmal => {
@@ -81,66 +83,73 @@ export class AppComponent {
                     if (i == 1) {
 
 
-                        this.VisEnSp = false;
-                        this.ViRuSp = false;
+                        this.bil = true;
+                        this.rut = false;
+                        this.en = false;
                         this.visSkjema = false;
                         this.VisBilSp = true;
                         this.VisType = false;
-                        this.visSvar = false;
+                        //     this.visSvar = false;
 
                     }
                     else if (i == 2) {
                         this.VisType = false;
-                        this.VisEnSp = true;
-                        this.ViRuSp = false;
+
+                        this.bil = false;
+                        this.rut = false;
+                        this.en = true;
                         this.visSkjema = false;
-                        this.VisBilSp = false;
-                        this.visSvar = false;
+                        this.VisBilSp = true;
+                        //  this.visSvar = false;
 
                     }
                     else if (i == 3) {
-                    this.VisEnSp = false;
-                    this.ViRuSp = true;
-                    this.visSkjema = false;
-                    this.VisBilSp = false
-                    this.VisType = false;
-                    this.visSvar = false;
+
+                        this.bil = false;
+                        this.rut = true;;
+                        this.en = false;
+                        this.visSkjema = false;
+                        this.VisBilSp = true
+                        this.VisType = false;
+                        //   this.visSvar = false;
                     }
                 },
                 error => alert(error)
-        );
-     
-       
-    }
-   /*hentSvar(i: number) {
-       i = 0;
-       i = i + 1;
-        this._http.get("api/Svar/" + i)
-            .subscribe(
-                sp => {
-
-                    this.etSv.svar = sp.toString();
-                    this.visSvar = true;
-                    
-                }
             );
-    }*/
-    hentSvar() {
-        this.visSvar = true;
+
+
+    }
+    /*hentSvar(i: number) {
+        i = 0;
+        i = i + 1;
+         this._http.get("api/Svar/" + i)
+             .subscribe(
+                 sp => {
+ 
+                     this.etSv.svar = sp.toString();
+                     this.visSvar = true;
+                     
+                 }
+             );
+     }*/
+    hentSvar(i) {
+
+        this.visSvar = i;
+
     }
 
 
     visTypeView() {
         this.laster = true;
-        
+
         this.VisType = false;
         this.laster = true;
     }
 
-   vedSubmit() {
-       if (this.skjemaStatus == "Registrere") {
+    vedSubmit() {
+        if (this.skjemaStatus == "Registrere") {
 
-             this.lagresp();
+            this.lagresp();
         }
 
         else {
@@ -159,28 +168,28 @@ export class AppComponent {
 
     }
 
-  
+
 
     lagresp() {
-        
+
         var sp = new sporsmal();
-        
+
         sp.sporsmal = this.skjema.value.sporsmal;
         sp.rating = 0;
         sp.stemmer = 0;
         sp.svar = " ";
-      sp.TypeId = this.skjema.value.TypeId ;
-        
+        sp.TypeId = this.skjema.value.TypeId;
+
         const body: string = JSON.stringify(sp);
 
         const headers = new HttpHeaders({ "Content-Type": "application/json" })
-        this._http.post("api/Svar" , body, { headers: headers })
+        this._http.post("api/Svar", body, { headers: headers })
             .subscribe(
                 () => {
                     this.hentAlletyper();
                     this.visSkjema = false;
                     this.VisType = true;
-                   
+
                     console.log("ferdig post-api/Svar");
                 },
                 error => alert(error)
@@ -190,8 +199,7 @@ export class AppComponent {
         this.VisType = true;
         this.visSkjema = false;
         this.VisBilSp = false;
-        this.VisEnSp = false;
-        this.ViRuSp = false;
+
 
     }
 
@@ -204,59 +212,59 @@ export class AppComponent {
         const headers = new HttpHeaders({ "Content-Type": "application/json" });
 
         this._http.put("api/Sporsmal/", body, { headers: headers }).subscribe
-           ( ()=> {
-              // this.hentalleSporsmal(poeng.TypeId);
-               if (poeng.Id < 6) {
-                   this.hentalleSporsmal(0);
-               } else if (poeng.Id > 5 && poeng.Id < 8) {
-                
-                   this.hentalleSporsmal(1);
-               }
-               else if (poeng.Id > 8 && poeng.Id < 12) {
-             
-                   this.hentalleSporsmal(2);
-               } else {
+            (() => {
+                // this.hentalleSporsmal(poeng.TypeId);
+                if (poeng.Id < 6) {
+                    this.hentalleSporsmal(0);
+                } else if (poeng.Id > 5 && poeng.Id < 8) {
 
-                   this.VisType = true;
-               }
-               
-                
-               this.visSvar = false;
-               console.log("ferdig post-api/Sporsmal");
-           },
-               error => alert(error),
-           );
-           
+                    this.hentalleSporsmal(1);
+                }
+                else if (poeng.Id > 8 && poeng.Id < 12) {
+
+                    this.hentalleSporsmal(2);
+                } else {
+
+                    this.VisType = true;
+                }
+
+
+                this.visSvar = -1;
+                console.log("ferdig post-api/Sporsmal");
+            },
+                error => alert(error),
+            );
+
     }
 
     stemSpned(i: number) {
         i = i + 1;
         const poeng = new sporsmal();
         poeng.Id = i;
-        
+
         const body: string = JSON.stringify(poeng);
         const headers = new HttpHeaders({ "Content-Type": "application/json" });
 
         this._http.put("api/Svar/", body, { headers: headers }).subscribe
             (() => {
-              // this.hentalleSporsmal(poeng.TypeId);
-                 if (poeng.Id < 6) {
-                   this.hentalleSporsmal(0);
-               } else if (poeng.Id > 5 && poeng.Id < 8) {
-                
-                   this.hentalleSporsmal(1);
-               }
-               else if (poeng.Id > 8 && poeng.Id < 12) {
-             
-                   this.hentalleSporsmal(2);
-               } else {
+                // this.hentalleSporsmal(poeng.TypeId);
+                if (poeng.Id < 6) {
+                    this.hentalleSporsmal(0);
+                } else if (poeng.Id > 5 && poeng.Id < 8) {
 
-                   this.VisType = true;
-               }
+                    this.hentalleSporsmal(1);
+                }
+                else if (poeng.Id > 8 && poeng.Id < 12) {
+
+                    this.hentalleSporsmal(2);
+                } else {
+
+                    this.VisType = true;
+                }
 
 
 
-                this.visSvar = false;
+                this.visSvar = -1;
                 console.log("ferdig post-api/Svar");
             },
                 error => alert(error),
