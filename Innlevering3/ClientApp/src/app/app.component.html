@@ -213,7 +213,7 @@
         Laster kategori...
       </div>
       <div *ngFor="let type of alleTyper; index as i">
-        <button (click)="hentalleSporsmal(i)" type="button" class="btn btn-warning btn-lg btn-block">
+        <button (click)="hentalleSporsmal(type.typeId)" type="button" class="btn btn-warning btn-lg btn-block">
           {{type.type}}
 
 
@@ -250,13 +250,14 @@
               <h5>
                 <button (click)="hentSvar(i)" class="btn btn-lg" type="button" data-toggle="collapse" data-target="#accordion-tab-1-content-1" aria-expanded="false" aria-controls="accordion-tab-1-content-1">  {{etSp.sporsmal}}</button>
               </h5>
-            </div>
+            </div>   
             <div *ngIf="visSvar===i" class="collapse show" id="accordion-tab-1-content-1" aria-labelledby="accordion-tab-1-heading-1" data-parent="#accordion-tab-1">
               <div class="card-body">
                 <p>{{etSp.svar}}</p>
-
-                <button (click)="stemSpOpp(i)" class="btn btn-primary glyphicon glyphicon-thumbs-up" disable-on-click data-disable-text="Saving..."><i class="material-icons">thumb_up</i></button>
-                <button (click)="stemSpned(i)" class="btn btn-danger glyphicon glyphicon-thumbs-down" disable-on-click data-disable-text="Saving..."><i class="material-icons">thumb_down</i></button>
+                <p>{{etSp.typeId}}</p>
+                <p>{{etSp.id}}</p>
+                <button (click)="stemSpOpp(etSp.id,etSp.typeId)" class="btn btn-primary glyphicon glyphicon-thumbs-up" disable-on-click data-disable-text="Saving..."><i class="material-icons">thumb_up</i></button>
+                <button (click)="stemSpned(etSp.id,etSp.typeId)" class="btn btn-danger glyphicon glyphicon-thumbs-down" disable-on-click data-disable-text="Saving..."><i class="material-icons">thumb_down</i></button>
 
 
                 <br />
@@ -292,8 +293,8 @@
 
         <div *ngFor="let type of alleTyper; index as i">
 
-          <input style="position:initial" type="radio" formControlName="TypeId" value="  {{i+1}}" required>
-          <input style="position:initial" type="radio" formControlName="type" value=" {{type.type}}" name="type" required>
+
+          <input (click)="velgtype(type.typeId)" style="position:initial" type="radio" formControlName="type" value=" {{type.type}}" name="type" required>
           <label class=""> {{type.type}}</label>
 
         </div>

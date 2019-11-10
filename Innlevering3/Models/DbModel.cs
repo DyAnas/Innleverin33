@@ -31,16 +31,8 @@ namespace Innlevering3.Models
 
 
 
-
-
         }
 
-
-        /*
-                protected override void OnModelCreating(DbModelBuilder modelBuilder)
-                {
-                    modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
-                }*/
 
 
         public DbSet<DBType> TypeSporsmal { get; set; }

@@ -17,7 +17,7 @@ export class AppComponent {
     VisType: boolean;
     laster: boolean;
     alleTyper: Array<sporsmal>;
-
+    types: any;
     VisBilSp: boolean;
     etSp: sporsmal;
     alleSporsmal: Array<sporsmal>;
@@ -28,12 +28,12 @@ export class AppComponent {
     ViRuSp: boolean;
     skjemaStatus: string;
     skjema: FormGroup;
-    TypeId: string;
+    typeId: any;
     rating: number;
     bil: boolean;
     en: boolean;
     rut: boolean;
-
+ 
 
 
     constructor(private _http: HttpClient, private fb: FormBuilder) {
@@ -42,7 +42,7 @@ export class AppComponent {
             sporsmal: [null, Validators.compose([Validators.required, Validators.pattern("^[a-zøæåA-ZØÆÅ. \\-]{2,200}$")])],
             svar: [""],
             rating: [0],
-            TypeId: [""],
+            typeId: [""],
             stemmer: [0],
             type: [""],
         });
@@ -74,11 +74,12 @@ export class AppComponent {
     };
 
     hentalleSporsmal(i: number) {
-        i = i + 1;
+        
         this._http.get<Isporsmal[]>("api/Sporsmal/" + i)
             .subscribe(
                 sporsmal => {
                     this.alleSporsmal = sporsmal;
+                   
                     this.laster = false;
                     if (i == 1) {
 
@@ -167,7 +168,9 @@ export class AppComponent {
         this.skjemaStatus = "Registrere";
 
     }
-
+    velgtype(i) {
+        this.types = i;
+    }
 
 
     lagresp() {
@@ -178,7 +181,7 @@ export class AppComponent {
         sp.rating = 0;
         sp.stemmer = 0;
         sp.svar = " ";
-        sp.TypeId = this.skjema.value.TypeId;
+        sp.typeId = this.types;
 
         const body: string = JSON.stringify(sp);
 
@@ -203,33 +206,38 @@ export class AppComponent {
 
     }
 
-    stemSpOpp(i: number) {
-        i = i + 1;
+    stemSpOpp(i,d) {
+      
         const poeng = new sporsmal();
-        poeng.Id = i;
-        poeng.TypeId = 1;
+        poeng.id = i;
+        poeng.typeId = d;
         const body: string = JSON.stringify(poeng);
         const headers = new HttpHeaders({ "Content-Type": "application/json" });
 
         this._http.put("api/Sporsmal/", body, { headers: headers }).subscribe
             (() => {
+                this.visSvar = -1;
+              //  this.hentalleSporsmal(poeng.typeId);
                 // this.hentalleSporsmal(poeng.TypeId);
-                if (poeng.Id < 6) {
-                    this.hentalleSporsmal(0);
-                } else if (poeng.Id > 5 && poeng.Id < 8) {
+             
+                if (poeng.id < 6) {
+                   
+                    this.hentalleSporsmal(poeng.typeId);
+               
+                } else if (poeng.id > 5 && poeng.id < 8) {
 
-                    this.hentalleSporsmal(1);
+                    this.hentalleSporsmal(poeng.typeId);
                 }
-                else if (poeng.Id > 8 && poeng.Id < 12) {
+                else if (poeng.id > 7 && poeng.id < 11) {
 
-                    this.hentalleSporsmal(2);
+                    this.hentalleSporsmal(poeng.typeId);
                 } else {
 
                     this.VisType = true;
+                    this.bil = false;
+                    this.rut = false;
+                    this.en = false;
                 }
-
-
-                this.visSvar = -1;
                 console.log("ferdig post-api/Sporsmal");
             },
                 error => alert(error),
@@ -237,34 +245,42 @@ export class AppComponent {
 
     }
 
-    stemSpned(i: number) {
-        i = i + 1;
+    stemSpned(i, d) {
+       
         const poeng = new sporsmal();
-        poeng.Id = i;
-
+        poeng.id = i;
+        poeng.typeId = d;
         const body: string = JSON.stringify(poeng);
         const headers = new HttpHeaders({ "Content-Type": "application/json" });
 
         this._http.put("api/Svar/", body, { headers: headers }).subscribe
             (() => {
                 // this.hentalleSporsmal(poeng.TypeId);
-                if (poeng.Id < 6) {
-                    this.hentalleSporsmal(0);
-                } else if (poeng.Id > 5 && poeng.Id < 8) {
+                this.visSvar = -1;
+                if (poeng.id < 6) {
+                    i = 0;
+                  
+                    this.hentalleSporsmal(poeng.typeId);
+                
 
-                    this.hentalleSporsmal(1);
+                } else if (poeng.id > 5 && poeng.id < 8) {
+
+                    this.hentalleSporsmal(poeng.typeId);
                 }
-                else if (poeng.Id > 8 && poeng.Id < 12) {
+                else if (poeng.id > 7 && poeng.id < 12) {
 
-                    this.hentalleSporsmal(2);
+                    this.hentalleSporsmal(poeng.typeId);
                 } else {
 
                     this.VisType = true;
+                    this.bil = false;
+                    this.rut = false;
+                    this.en = false;
                 }
 
 
 
-                this.visSvar = -1;
+               // this.visSvar = -1;
                 console.log("ferdig post-api/Svar");
             },
                 error => alert(error),

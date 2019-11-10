@@ -1,8 +1,8 @@
 
 
 export class sporsmal {
-    TypeId: number;
-    Id: number;
+    typeId: number;
+    id: number;
     sporsmal: string;
     svar: string;
     rating: number;
@@ -11,8 +11,8 @@ export class sporsmal {
 
 }
 export class Isporsmal {
-    TypeId: number;
-    Id: number;
+    typeId: number;
+    id: number;
     sporsmal: string;
     svar: string;
     rating: number;

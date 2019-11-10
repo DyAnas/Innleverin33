@@ -19,7 +19,7 @@ namespace Innlevering3
     public List<sporsmals> hentalleSpørsmål(int TypeId)
     {
         List<sporsmals> spørsmål = new List<sporsmals>();
-        var alleSpørmål = _context.sporsmals.Where(k => k.type.TypeId == TypeId).OrderByDescending(k => k.rating)   .ToList();
+        var alleSpørmål = _context.sporsmals.Where(k => k.type.TypeId == TypeId).Include(k=> k.type).OrderByDescending(k => k.rating)   .ToList();
         foreach (DBSporsmal s in alleSpørmål)
         {
             spørsmål.Add(new sporsmals
@@ -29,7 +29,8 @@ namespace Innlevering3
                 rating = s.rating,
                 svar = s.svar,
                 stemmer=s.stemmer,
-               
+                type=s.type.type,
+                TypeId=s.type.TypeId
 
 
             });
