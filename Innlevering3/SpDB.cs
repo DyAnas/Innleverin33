@@ -118,10 +118,17 @@ namespace Innlevering3
         {
             return false;
         }
+            if (sp.svar.Equals(""))
+            {
+                sp.rating = 0;
+                sp.stemmer = 0;
+
+            }
+            else { 
         sp.rating++;
         sp.stemmer++;
-
-        try
+            }
+            try
         {
             _context.SaveChanges();
         }
@@ -140,9 +147,17 @@ namespace Innlevering3
         {
             return false;
         }
-        sp.rating--;
-        sp.stemmer++;
+            if (sp.svar.Equals(""))
+            {
+                sp.rating = 0;
+                sp.stemmer = 0;
 
+            }
+            else
+            {
+                sp.rating--;
+                sp.stemmer++;
+            }
         try
         {
             _context.SaveChanges();

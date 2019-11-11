@@ -63,7 +63,7 @@ export class AppComponent {
         this._http.get<Isporsmal[]>("api/Svar/")
             .subscribe(
                 typer => {
-
+                   // this.VisType = true;
                     this.alleTyper = typer;
                     this.laster = false;
                     this.VisBilSp = false;
@@ -79,7 +79,7 @@ export class AppComponent {
             .subscribe(
                 sporsmal => {
                     this.alleSporsmal = sporsmal;
-                   
+                    
                     this.laster = false;
                     if (i == 1) {
 
@@ -114,6 +114,7 @@ export class AppComponent {
                         this.VisType = false;
                         //   this.visSvar = false;
                     }
+                   
                 },
                 error => alert(error)
             );
@@ -180,7 +181,7 @@ export class AppComponent {
         sp.sporsmal = this.skjema.value.sporsmal;
         sp.rating = 0;
         sp.stemmer = 0;
-        sp.svar = " ";
+        sp.svar = "";
         sp.typeId = this.types;
 
         const body: string = JSON.stringify(sp);
@@ -232,11 +233,12 @@ export class AppComponent {
 
                     this.hentalleSporsmal(poeng.typeId);
                 } else {
-
                     this.VisType = true;
+                    this.hentAlletyper();
                     this.bil = false;
                     this.rut = false;
                     this.en = false;
+
                 }
                 console.log("ferdig post-api/Sporsmal");
             },
@@ -271,7 +273,7 @@ export class AppComponent {
 
                     this.hentalleSporsmal(poeng.typeId);
                 } else {
-
+                    this.hentAlletyper();
                     this.VisType = true;
                     this.bil = false;
                     this.rut = false;

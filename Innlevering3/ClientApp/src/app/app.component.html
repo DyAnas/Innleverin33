@@ -5,273 +5,383 @@
   </div>-->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
-  <!---
+
   <script>
-    (function (document, $) {
-
-      $(function () {
-        $(document).on('click', '[disable-on-click], .disable-on-click', function () {
-          var disableText = this.getAttribute("data-disable-text") || 'Processing...';
-
-          if (this.form) {
-            this.form.submit();
-          }
-
-          this.disabled = true;
-
-          if (this.tagName === 'BUTTON') {
-            this.innerHTML = disableText;
-
-          });
-      });
-
-    })(document, jQuery);
-  </script>-->
-  <!---
-    <style>
-      body {
-        margin-top: 30px;
-        background-color: #eee;
+    $('.counter-count').each(function () {
+      $(this).prop('Counter', 0).animate({
+        Counter: $(this).text()
+      }, {
+        duration: 5000,
+        easing: 'swing',
+        step: function (now) {
+          $(this).text(Math.ceil(now));
+        }
       }
+  </script>
 
-      .faq-nav {
-        flex-direction: column;
-        margin: 0 0 32px;
-        border-radius: 2px;
-        border: 1px solid #ddd;
-        box-shadow: 0 1px 5px rgba(85, 85, 85, 0.15);
-        .nav-link
+  <style>
 
-      {
-        position: relative;
+    .counter {
+      background-color: #eaecf0;
+      text-align: center;
+    }
+
+    .poeng {
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+
+    .counter-count {
+      font-size: 16px;
+      background-color: #00b3e7;
+      border-radius: 50%;
+      position: relative;
+      color: #ffffff;
+      text-align: center;
+      line-height: 60px;
+      width: 60px;
+      height: 60px;
+      -webkit-border-radius: 50%;
+      -moz-border-radius: 50%;
+      -ms-border-radius: 50%;
+      -o-border-radius: 50%;
+      display: inline-block;
+    }
+
+    .poeng-p {
+      font-size: 20px;
+      color: #000000;
+      line-height: 20px;
+    }
+
+    #home_quicklinks {
+      padding: 20px 0;
+      text-align: center;
+    }
+
+    a.quicklink.link1 {
+      background: #fc6719;
+    }
+
+    a.quicklink {
+      display: inline-block;
+      width: 302px;
+      height: 173px;
+      position: relative;
+      margin: 90px 30px;
+    }
+
+      a.quicklink .ql_caption {
         display: block;
-        margin: 0;
-        padding: 13px 16px;
-        background-color: #fff;
-        border: 0;
-        border-bottom: 1px solid #ddd;
-        border-radius: 0;
-        color: #616161;
-        transition: background-color .2s ease;
-        &:hover
-
-      {
-        background-color: #f6f6f6;
-      }
-
-      &.active {
-        background-color: #f6f6f6;
-        font-weight: 700;
-        color: rgba(0,0,0,.87);
-      }
-
-      &:last-of-type {
-        border-bottom-left-radius: 2px;
-        border-bottom-right-radius: 2px;
-        border-bottom: 0;
-      }
-
-      i.mdi {
-        margin-right: 5px;
-        font-size: 18px;
-        position: relative;
-      }
-
-      }
-      }
-
-      // TAB CONTENT
-      .tab-content {
-        box-shadow: 0 1px 5px rgba(85, 85, 85, 0.15);
-        .card
-
-      {
-        border-radius: 0;
-      }
-
-      .card-header {
-        padding: 15px 16px;
-        border-radius: 0;
-        background-color: #f6f6f6;
-        h5
-
-      {
-        margin: 0;
-        button
-
-      {
-        display: block;
+        height: 100%;
         width: 100%;
-        padding: 0;
-        border: 0;
-        font-weight: 700;
-        color: rgba(0,0,0,.87);
-        text-align: left;
-        white-space: normal;
-        &:hover, &:focus, &:active, &:hover:active
-
-      {
-        text-decoration: none;
+        position: relative;
       }
 
+    .outer {
+      display: table;
+      position: relative;
+      vertical-align: middle;
+      text-align: center;
+      height: 100%;
+      width: 100%;
+      border-spacing: 0px;
+      padding: 0px;
+    }
+
+    .inner {
+      display: table-cell;
+      position: relative;
+      vertical-align: middle;
+      text-align: center;
+      height: 100%;
+      width: 100%;
+      border-spacing: 0px;
+      padding: 0px;
+    }
+
+    a.quicklink .ql_caption h2 {
+      margin: 0px;
+      padding: 0px;
+      text-transform: uppercase;
+      line-height: 1.46em;
+      color: #fff;
+    }
+
+    a.quicklink.link1 .ql_top {
+      border-bottom-color: #fc6719;
+    }
+
+    a.quicklink.link1 .ql_bottom {
+      border-top-color: #fc6719;
+    }
+
+
+    .ql_top {
+      bottom: 173px;
+      border-bottom: 89px solid #ccc;
+    }
+
+    .ql_bottom {
+      top: 173px;
+      border-top: 89px solid #ccc;
+    }
+
+    .ql_top, .ql_bottom {
+      position: absolute;
+      left: 0px;
+      width: 0px;
+      border-left: 151px solid transparent;
+      border-right: 151px solid transparent;
+    }
+
+    a.quicklink.link2 {
+      background: #fcf4e7;
+    }
+
+      a.quicklink.link2 .ql_top {
+        border-bottom-color: #fcf4e7;
       }
-      }
-      }
 
-      .card-body {
-        p
-
-      {
-        color: #616161;
-        &:last-of-type
-
-      {
-        margin: 0;
-      }
-
-      }
-      }
-      }
-
-      // BORDER FIX
-      .accordion {
-        > .card
-
-      {
-        &:not(:first-child)
-
-      {
-        border-top: 0;
-      }
-
-      }
-      }
-
-      .collapse.show {
-        .card-body
-
-      {
-        border-bottom: 1px solid rgba(0,0,0,.125);
-      }
-
+      a.quicklink.link2 .ql_bottom {
+        border-top-color: #fcf4e7;
       }
 
 
+    a.quicklink.link3 .ql_top {
+      border-bottom-color: #bcbdc0;
+    }
 
+    a.quicklink.link3 .ql_bottom {
+      border-top-color: #bcbdc0;
+    }
 
-      h2 {
-        font-family: Arial, Verdana;
-        font-weight: 800;
-        font-size: 2.5rem;
-        color: #091f2f;
-        text-transform: uppercase;
+    a.quicklink.link3 {
+      background: #bcbdc0;
+    }
+
+    a.quicklink {
+      font-size: 36px;
+      font-weight: 500;
+      text-decoration: none;
+    }
+
+    .hexagon {
+      position: relative;
+      width: 300px;
+      height: 173.21px;
+      margin: 86.60px 0;
+      background-image: url(http://csshexagon.com/img/meow.jpg);
+      background-size: auto 334.8632px;
+      background-position: center;
+      box-shadow: 0 0 20px rgba(0,128,192,0.6);
+      border-left: solid 5px #4a401c;
+      border-right: solid 5px #4a401c;
+    }
+
+    .hexTop,
+    .hexBottom {
+      position: absolute;
+      z-index: 1;
+      width: 212.13px;
+      height: 212.13px;
+      overflow: hidden;
+      -webkit-transform: scaleY(0.5774) rotate(-45deg);
+      -ms-transform: scaleY(0.5774) rotate(-45deg);
+      transform: scaleY(0.5774) rotate(-45deg);
+      background: inherit;
+      left: 38.93px;
+      box-shadow: 0 0 20px rgba(0,128,192,0.6);
+    }
+
+      /*counter transform the bg image on the caps*/
+      .hexTop:after,
+      .hexBottom:after {
+        content: "";
+        position: absolute;
+        width: 290.0000px;
+        height: 167.4315780649915px;
+        -webkit-transform: rotate(45deg) scaleY(1.7321) translateY(-83.7158px);
+        -ms-transform: rotate(45deg) scaleY(1.7321) translateY(-83.7158px);
+        transform: rotate(45deg) scaleY(1.7321) translateY(-83.7158px);
+        -webkit-transform-origin: 0 0;
+        -ms-transform-origin: 0 0;
+        transform-origin: 0 0;
+        background: inherit;
       }
 
-      .accordion-section .panel-default > .panel-heading {
-        border: 0;
-        background: #f4f4f4;
-        padding: 0;
+    .hexTop {
+      top: -106.0660px;
+      border-top: solid 7.0711px #4a401c;
+      border-right: solid 7.0711px #4a401c;
+    }
+
+      .hexTop:after {
+        background-position: center top;
       }
 
-      .accordion-section .panel-default .panel-title a {
-        display: block;
-        font-style: italic;
-        font-size: 1.5rem;
+    .hexBottom {
+      bottom: -106.0660px;
+      border-bottom: solid 7.0711px #4a401c;
+      border-left: solid 7.0711px #4a401c;
+    }
+
+      .hexBottom:after {
+        background-position: center bottom;
       }
 
-        .accordion-section .panel-default .panel-title a:after {
-          font-family: 'FontAwesome';
-          font-style: normal;
-          font-size: 3rem;
-          content: "\f106";
-          color: #1f7de2;
-          float: right;
-          margin-top: -12px;
-        }
+    .hexagon:after {
+      content: "";
+      position: absolute;
+      top: 2.8868px;
+      left: 0;
+      width: 290.0000px;
+      height: 167.4316px;
+      z-index: 2;
+      background: inherit;
+    }
+  </style>
 
-        .accordion-section .panel-default .panel-title a.collapsed:after {
-          content: "\f107";
-        }
-
-      .accordion-section .panel-default .panel-body {
-        font-size: 1.2rem;
-      }
-    </style>
-   ----- -->
-
-
-
-
-  <div class="container">
-    <button class='btn btn-primary btn-lg btn-block' (click)='registrerSp()'>Spør</button>
-    <br />
-    <br />
-    <br />
-    <br />
+  <div id="home_quicklinks">
     <div *ngIf="VisType">
       <div *ngIf="laster">
         Laster kategori...
       </div>
       <div *ngFor="let type of alleTyper; index as i">
-        <button (click)="hentalleSporsmal(type.typeId)" type="button" class="btn btn-warning btn-lg btn-block">
-          {{type.type}}
-
-
-        </button><br />
-
-        <br />
-
-        <br />
-
-
+        <div style="position:relative">
+          <a (click)="hentalleSporsmal(type.typeId)" class="quicklink link2" href="#">
+            <span class="ql_caption">
+              <span class="outer">
+                <span class="inner">
+                  {{type.type}}
+                </span>
+              </span>
+            </span>
+            <span class="ql_top"></span>
+            <span class="ql_bottom"></span>
+          </a>
+        </div>
       </div>
 
     </div>
 
   </div>
 
-  <!------------------------------------------------------------------------------------------->
+  
 
-  <div class="col-lg-8">
-    <div *ngIf="VisBilSp" class="tab-content" id="faq-tab-content">
-      <div class="tab-pane show active" id="tab1" role="tabpanel" aria-labelledby="tab1">
-        <div class="accordion" id="accordion-tab-1">
-          <div *ngIf="bil">
-            <h1>Billetter spørsmål</h1>
+
+  <div id="home_quicklinks">
+    <a  (click)='registrerSp()' class="quicklink link1" href="#">
+      <span class="ql_caption">
+        <span class="outer">
+          <span class="inner">
+            <h2>Spør</h2>
+          </span>
+        </span>
+      </span>
+      <span class="ql_top"></span>
+      <span class="ql_bottom"></span>
+    </a>
+
+
+
+    </div>
+
+    <!---
+      <div class="container">
+        <button class='btn btn-primary btn-lg btn-block' (click)='registrerSp()'>Spør</button>
+        <br />
+        <br />
+        <br />
+        <br />
+        <div *ngIf="VisType">
+          <div *ngIf="laster">
+            Laster kategori...
           </div>
-          <div *ngIf="en">
-            <h1>Endringer spørsmål...</h1>
+          <div *ngFor="let type of alleTyper; index as i">
+            <button (click)="hentalleSporsmal(type.typeId)" type="button" class="btn btn-warning btn-lg btn-block">
+              {{type.type}}
+
+
+            </button><br />
+
+            <br />
+
+            <br />
+
+
           </div>
-          <div *ngIf="rut">
-            <h1>Ruter spørsmål</h1>
-          </div>
-          <div *ngFor="let etSp of alleSporsmal; index as i" class="card">
-            <div class="card-header" id="accordion-tab-1-heading-1">
-              <h5>
-                <button (click)="hentSvar(i)" class="btn btn-lg" type="button" data-toggle="collapse" data-target="#accordion-tab-1-content-1" aria-expanded="false" aria-controls="accordion-tab-1-content-1">  {{etSp.sporsmal}}</button>
-              </h5>
-            </div>   
-            <div *ngIf="visSvar===i" class="collapse show" id="accordion-tab-1-content-1" aria-labelledby="accordion-tab-1-heading-1" data-parent="#accordion-tab-1">
-              <div class="card-body">
-                <p>{{etSp.svar}}</p>
-                <p>{{etSp.typeId}}</p>
-                <p>{{etSp.id}}</p>
-                <button (click)="stemSpOpp(etSp.id,etSp.typeId)" class="btn btn-primary glyphicon glyphicon-thumbs-up" disable-on-click data-disable-text="Saving..."><i class="material-icons">thumb_up</i></button>
-                <button (click)="stemSpned(etSp.id,etSp.typeId)" class="btn btn-danger glyphicon glyphicon-thumbs-down" disable-on-click data-disable-text="Saving..."><i class="material-icons">thumb_down</i></button>
+
+        </div>
+
+      </div>
+      -->
+    <!--------------------------------------Sporsmål----------------------------------------------------->
+
+    <div class="col-lg-8">
+      <div *ngIf="VisBilSp" class="tab-content" id="faq-tab-content">
+        <div class="tab-pane show active" id="tab1" role="tabpanel" aria-labelledby="tab1">
+          <div class="accordion" id="accordion-tab-1">
+            <div *ngIf="bil">
+              <h1>Billetter spørsmål</h1>
+            </div>
+            <div *ngIf="en">
+              <h1>Endringerspørsmål...<</h1>
+            </div>
+            <div *ngIf="rut">
+              <h1>Ruter spørsmål</h1>
+            </div>
+            <div *ngFor="let etSp of alleSporsmal; index as i" class="card">
+              <div class="card-header" id="accordion-tab-1-heading-1">
+                <h5>
+                  <button (click)="hentSvar(i)" class="btn btn-lg" type="button" data-toggle="collapse" data-target="#accordion-tab-1-content-1" aria-expanded="false" aria-controls="accordion-tab-1-content-1">  {{etSp.sporsmal}}</button>
+                </h5>
+              </div>
+              <div *ngIf="visSvar===i" class="collapse show" id="accordion-tab-1-content-1" aria-labelledby="accordion-tab-1-heading-1" data-parent="#accordion-tab-1">
+                <div class="card-body">
+                  <p>{{etSp.svar}}</p>
+
+                  <div class="row">
+                    <div class="col-lg-1 col-md-3 col-sm-3 col-xs-12">
+                      <div class="poeng">
+                        <button (click)="stemSpOpp(etSp.id,etSp.typeId)" class="btn btn-primary glyphicon glyphicon-thumbs-up" disable-on-click data-disable-text="Saving..."><i class="material-icons">thumb_up</i></button>
+
+                      </div>
+                    </div>
+
+                    <div class="col-lg-1 col-md-3 col-sm-3 col-xs-12">
+                      <div class="poeng">
+
+                        <button (click)="stemSpned(etSp.id,etSp.typeId)" class="btn btn-danger glyphicon glyphicon-thumbs-down" disable-on-click data-disable-text="Saving..."><i class="material-icons">thumb_down</i></button>
+                      </div>
+                    </div>
 
 
-                <br />
-                <label>Poeng: </label><p>{{etSp.rating}}</p>
-                <label>Bsert på </label><p>{{etSp.stemmer}} stemmer</p>
 
+                    <div class="col-lg-1 col-md-3 col-sm-3 col-xs-12">
+                      <div class="poeng">
+                        <p class="counter-count">{{etSp.rating}}</p>
+                        <p class="poeng-p">poeng</p>
+                      </div>
+                    </div>
+
+                    <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
+                      <div class="poeng">
+                        <p class="counter-count">{{etSp.stemmer}}</p>
+                        <p class="poeng-p">stemmer</p>
+                      </div>
+                    </div>
+
+                  </div>
+
+                </div>
               </div>
             </div>
           </div>
+          <button class="btn btn-default" (click)="tilbakeTilListe()">Tilbake</button>
         </div>
       </div>
-      <button class="btn btn-default" (click)="tilbakeTilListe()">Tilbake</button>
     </div>
-  </div>
 
 
 
@@ -284,36 +394,36 @@
 
 
 
-  <!----------------------- Skjema------------------------------------>
-  <div class="col-sm-4 col-sm-offset-2" *ngIf="visSkjema">
-    <form [formGroup]="skjema" (ngSubmit)="vedSubmit()">
+    <!----------------------- Skjema------------------------------------>
+    <div class="col-sm-4 col-sm-offset-2" *ngIf="visSkjema">
+      <form [formGroup]="skjema" (ngSubmit)="vedSubmit()">
 
-      <div class="form-group">
-        <label>Hva kan vi hjelpe deg med?</label>
+        <div class="form-group">
+          <label>Hva kan vi hjelpe deg med?</label>
 
-        <div *ngFor="let type of alleTyper; index as i">
+          <div *ngFor="let type of alleTyper; index as i">
 
 
-          <input (click)="velgtype(type.typeId)" style="position:initial" type="radio" formControlName="type" value=" {{type.type}}" name="type" required>
-          <label class=""> {{type.type}}</label>
+            <input (click)="velgtype(type.typeId)" style="position:initial" type="radio" formControlName="type" value=" {{type.type}}" name="type" required>
+            <label class=""> {{type.type}}</label>
 
+          </div>
         </div>
-      </div>
-      <div class="form-group">
-        <label>Skriv din spørsmål</label>
-        <textarea class="form-control" formControlName="sporsmal" rows="4"></textarea>
-        <p class="alert alert-warning" [hidden]="skjema.controls.sporsmal.valid ||  !submitted">
-          Feltet må fylles ut
-        </p>
-      </div>
+        <div class="form-group">
+          <label>Skriv din spørsmål</label>
+          <textarea class="form-control" formControlName="sporsmal" rows="4"></textarea>
+          <p class="alert alert-warning" [hidden]="skjema.controls.sporsmal.valid ||  !submitted">
+            Feltet må fylles ut
+          </p>
+        </div>
 
-      <div class="form-group">
+        <div class="form-group">
 
-        <button type="submit" *ngIf="skjemaStatus=='Registrere'" [disabled]="!skjema.valid" class="btn btn-primary">Registrer</button>
-        <button class="btn btn-default" (click)="tilbakeTilListe()">Tilbake</button>
-      </div>
-    </form>
-  </div>
+          <button type="submit" *ngIf="skjemaStatus=='Registrere'" [disabled]="!skjema.valid" class="btn btn-primary">Registrer</button>
+          <button class="btn btn-default" (click)="tilbakeTilListe()">Tilbake</button>
+        </div>
+      </form>
+    </div>
 
 
 </body>
