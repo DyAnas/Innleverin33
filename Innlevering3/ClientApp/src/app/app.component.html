@@ -1,8 +1,6 @@
 <body>
   <app-nav-menu></app-nav-menu>
-  <!--<div class="container">
-    <router-outlet></router-outlet>
-  </div>-->
+  
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
 
@@ -18,230 +16,7 @@
         }
       }
   </script>
-  <!--
-  <style>
-
-    .counter {
-      background-color: #eaecf0;
-      text-align: center;
-    }
-
-    .poeng {
-      margin-top: 20px;
-      margin-bottom: 20px;
-    }
-
-    .counter-count {
-      font-size: 16px;
-      background-color: #00b3e7;
-      border-radius: 50%;
-      position: relative;
-      color: #ffffff;
-      text-align: center;
-      line-height: 60px;
-      width: 60px;
-      height: 60px;
-      -webkit-border-radius: 50%;
-      -moz-border-radius: 50%;
-      -ms-border-radius: 50%;
-      -o-border-radius: 50%;
-      display: inline-block;
-    }
-
-    .poeng-p {
-      font-size: 20px;
-      color: #000000;
-      line-height: 20px;
-    }
-
-    #home_quicklinks {
-      padding: 20px 0;
-      text-align: center;
-    }
-
-    a.quicklink.link1 {
-      background: #fc6719;
-    }
-
-    a.quicklink {
-      display: inline-block;
-      width: 302px;
-      height: 173px;
-      position: relative;
-      margin: 90px 30px;
-    }
-
-      a.quicklink .ql_caption {
-        display: block;
-        height: 100%;
-        width: 100%;
-        position: relative;
-      }
-
-    .outer {
-      display: table;
-      position: relative;
-      vertical-align: middle;
-      text-align: center;
-      height: 100%;
-      width: 100%;
-      border-spacing: 0px;
-      padding: 0px;
-    }
-
-    .inner {
-      display: table-cell;
-      position: relative;
-      vertical-align: middle;
-      text-align: center;
-      height: 100%;
-      width: 100%;
-      border-spacing: 0px;
-      padding: 0px;
-    }
-
-    a.quicklink .ql_caption h2 {
-      margin: 0px;
-      padding: 0px;
-      text-transform: uppercase;
-      line-height: 1.46em;
-      color: #fff;
-    }
-
-    a.quicklink.link1 .ql_top {
-      border-bottom-color: #fc6719;
-    }
-
-    a.quicklink.link1 .ql_bottom {
-      border-top-color: #fc6719;
-    }
-
-
-    .ql_top {
-      bottom: 173px;
-      border-bottom: 89px solid #ccc;
-    }
-
-    .ql_bottom {
-      top: 173px;
-      border-top: 89px solid #ccc;
-    }
-
-    .ql_top, .ql_bottom {
-      position: absolute;
-      left: 0px;
-      width: 0px;
-      border-left: 151px solid transparent;
-      border-right: 151px solid transparent;
-    }
-
-    a.quicklink.link2 {
-      background: #fcf4e7;
-    }
-
-      a.quicklink.link2 .ql_top {
-        border-bottom-color: #fcf4e7;
-      }
-
-      a.quicklink.link2 .ql_bottom {
-        border-top-color: #fcf4e7;
-      }
-
-
-    a.quicklink.link3 .ql_top {
-      border-bottom-color: #bcbdc0;
-    }
-
-    a.quicklink.link3 .ql_bottom {
-      border-top-color: #bcbdc0;
-    }
-
-    a.quicklink.link3 {
-      background: #bcbdc0;
-    }
-
-    a.quicklink {
-      font-size: 36px;
-      font-weight: 500;
-      text-decoration: none;
-    }
-
-    .hexagon {
-      position: relative;
-      width: 300px;
-      height: 173.21px;
-      margin: 86.60px 0;
-      background-image: url(http://csshexagon.com/img/meow.jpg);
-      background-size: auto 334.8632px;
-      background-position: center;
-      box-shadow: 0 0 20px rgba(0,128,192,0.6);
-      border-left: solid 5px #4a401c;
-      border-right: solid 5px #4a401c;
-    }
-
-    .hexTop,
-    .hexBottom {
-      position: absolute;
-      z-index: 1;
-      width: 212.13px;
-      height: 212.13px;
-      overflow: hidden;
-      -webkit-transform: scaleY(0.5774) rotate(-45deg);
-      -ms-transform: scaleY(0.5774) rotate(-45deg);
-      transform: scaleY(0.5774) rotate(-45deg);
-      background: inherit;
-      left: 38.93px;
-      box-shadow: 0 0 20px rgba(0,128,192,0.6);
-    }
-
-      /*counter transform the bg image on the caps*/
-      .hexTop:after,
-      .hexBottom:after {
-        content: "";
-        position: absolute;
-        width: 290.0000px;
-        height: 167.4315780649915px;
-        -webkit-transform: rotate(45deg) scaleY(1.7321) translateY(-83.7158px);
-        -ms-transform: rotate(45deg) scaleY(1.7321) translateY(-83.7158px);
-        transform: rotate(45deg) scaleY(1.7321) translateY(-83.7158px);
-        -webkit-transform-origin: 0 0;
-        -ms-transform-origin: 0 0;
-        transform-origin: 0 0;
-        background: inherit;
-      }
-
-    .hexTop {
-      top: -106.0660px;
-      border-top: solid 7.0711px #4a401c;
-      border-right: solid 7.0711px #4a401c;
-    }
-
-      .hexTop:after {
-        background-position: center top;
-      }
-
-    .hexBottom {
-      bottom: -106.0660px;
-      border-bottom: solid 7.0711px #4a401c;
-      border-left: solid 7.0711px #4a401c;
-    }
-
-      .hexBottom:after {
-        background-position: center bottom;
-      }
-
-    .hexagon:after {
-      content: "";
-      position: absolute;
-      top: 2.8868px;
-      left: 0;
-      width: 290.0000px;
-      height: 167.4316px;
-      z-index: 2;
-      background: inherit;
-    }
-  </style>
-      -->
+  
   <div class="container">
     <div id="home_quicklinks">
       <a (click)='registrerSp()' class="quicklink link1" href="#">
@@ -275,18 +50,18 @@
           <div style="margin-left:0px">
             <div *ngFor="let type of alleTyper; index as i" class="promotion-block col-xl-13 col-md-13 col-sm-13 col-lg-13 text-promotion-block text-promotion-block--color8">
               <!--<div style="position:relative">
-      <a (click)="hentalleSporsmal(type.typeId)" class="quicklink link2" href="#">
-        <span class="ql_caption">
-          <span class="outer">
-            <span class="inner">
-              {{type.type}}
-            </span>
-          </span>
-        </span>
-        <span class="ql_top"></span>
-        <span class="ql_bottom"></span>
-      </a>
-    </div>-->
+                <a (click)="hentalleSporsmal(type.typeId)" class="quicklink link2" href="#">
+                  <span class="ql_caption">
+                    <span class="outer">
+                      <span class="inner">
+                        {{type.type}}
+                      </span>
+                    </span>
+                  </span>
+                  <span class="ql_top"></span>
+                  <span class="ql_bottom"></span>
+                </a>
+              </div>-->
 
               <div id="home_quicklinks" style="float:left; position:center">
                 <a data-v-6c889e9f="" (click)="hentalleSporsmal(type.typeId)" class="quicklink link2" href="#">
@@ -307,9 +82,9 @@
 
 
           </div>
-          </div>
-
         </div>
+
+      </div>
 
     </div>
   </div>
@@ -363,54 +138,54 @@
               <h1>Ruter spørsmål</h1>
               <br />
             </div>
-          
-              <div *ngFor="let etSp of alleSporsmal; index as i" class="card">
-                <div class="card-header" id="accordion-tab-1-heading-1">
-                  <h5>
-                    <button (click)="hentSvar(i)" class="btn btn-lg" type="button" data-toggle="collapse" data-target="#accordion-tab-1-content-1" aria-expanded="false" aria-controls="accordion-tab-1-content-1">  {{etSp.sporsmal}}</button>
-                  </h5>
-                </div>
-                <div *ngIf="visSvar===i" class="collapse show" id="accordion-tab-1-content-1" aria-labelledby="accordion-tab-1-heading-1" data-parent="#accordion-tab-1">
-                  <div class="card-body">
-                    <p>{{etSp.svar}}</p>
 
-                    <div class="row">
-                      <div class="col-lg-1 col-md-3 col-sm-3 col-xs-12">
-                        <div class="poeng">
-                          <button (click)="stemSpOpp(etSp.id,etSp.typeId)" class="btn btn-outline-primary glyphicon glyphicon-thumbs-up" disable-on-click data-disable-text="Saving..."><i class="material-icons">thumb_up</i></button>
+            <div *ngFor="let etSp of alleSporsmal; index as i" class="card">
+              <div class="card-header" id="accordion-tab-1-heading-1">
+                <h5>
+                  <button (click)="hentSvar(i)" class="btn btn-lg" type="button" data-toggle="collapse" data-target="#accordion-tab-1-content-1" aria-expanded="false" aria-controls="accordion-tab-1-content-1">  {{etSp.sporsmal}}</button>
+                </h5>
+              </div>
+              <div *ngIf="visSvar===i" class="collapse show" id="accordion-tab-1-content-1" aria-labelledby="accordion-tab-1-heading-1" data-parent="#accordion-tab-1">
+                <div class="card-body">
+                  <p>{{etSp.svar}}</p>
 
-                        </div>
+                  <div class="row">
+                    <div class="col-lg-1 col-md-3 col-sm-3 col-xs-12">
+                      <div class="poeng">
+                        <button (click)="stemSpOpp(etSp.id,etSp.typeId)" class="btn btn-outline-primary glyphicon glyphicon-thumbs-up" disable-on-click data-disable-text="Saving..."><i class="material-icons">thumb_up</i></button>
+
                       </div>
+                    </div>
 
-                      <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
-                        <div class="poeng">
+                    <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
+                      <div class="poeng">
 
-                          <button [disabled]="isUnchanged" (click)="stemSpned(etSp.id,etSp.typeId)" class="btn btn-outline-danger glyphicon glyphicon-thumbs-down" disable-on-click data-disable-text="Saving..."><i class="material-icons">thumb_down</i></button>
-                        </div>
+                        <button [disabled]="isUnchanged" (click)="stemSpned(etSp.id,etSp.typeId)" class="btn btn-outline-danger glyphicon glyphicon-thumbs-down" disable-on-click data-disable-text="Saving..."><i class="material-icons">thumb_down</i></button>
                       </div>
+                    </div>
 
 
 
-                      <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
-                        <div class="poeng">
-                          <p class="counter-count">{{etSp.rating}}</p>
-                          <p class="poeng-p">poeng</p>
-                        </div>
+                    <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
+                      <div class="poeng">
+                        <p class="counter-count">{{etSp.rating}}</p>
+                        <p class="poeng-p">poeng</p>
                       </div>
+                    </div>
 
-                      <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
-                        <div class="poeng">
-                          <p class="counter-count">{{etSp.stemmer}}</p>
-                          <p class="poeng-p">stemmer</p>
-                        </div>
+                    <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
+                      <div class="poeng">
+                        <p class="counter-count">{{etSp.stemmer}}</p>
+                        <p class="poeng-p">stemmer</p>
                       </div>
-
                     </div>
 
                   </div>
+
                 </div>
               </div>
-            
+            </div>
+
           </div>
           <br />
           <br />
@@ -418,6 +193,124 @@
         </div>
       </div>
     </div>
+  </div>
+
+  <!----------------------------------------------------
+  <div class="container">
+  <div>
+    <div class="_8ba87413">
+    <label class="_a95c63c3" for="input--reference-code">Referansekode
+      <div class="_559a3387">
+      <span class="_b72ffc1e">Du finner referansekoden på kvitteringen du har fått.</span>
+        </div></label>
+    <div class="_206f47fe">
+      <input class="_aa55873d  _aab6fe50" id="input--reference-code" name="input--reference-code" autocomplete="on">
+      </div>
+      </div>
+    </div>
+  <div>
+    <div class="_8ba87413">
+    <label class="_a95c63c3" for="input--subject">Emne</label>
+    <div class="_206f47fe">
+      <input class="_aa55873d  _aab6fe50" id="input--subject" placeholder="" name="input--subject" autocomplete="on"></div>
+      </div>
+    </div>
+  <div class="_94fd33b1">
+    <label class="_a95c63c3" for="input--description">Hva kan vi hjelpe deg med?
+    <div class="_559a3387">
+      <span class="_b72ffc1e">Ikke skriv sensitiv informasjon i feltet, som bankkortnummer eller helseopplysninger. Vi spør senere, hvis vi trenger det.</span>
+      </div>
+      </label>
+    <div>
+    <div class="_b6e81b2b">
+      <textarea class="_6c7f21b7 _a12e50e3 " id="input--description" rows="6" cols="20" maxlength="1000" placeholder="Skriv her">
+     </textarea>
+      </div>
+    <div class="_50a5f9e1">0/1000
+      </div>
+      </div>
+    </div>
+
+  <div class="_65b9208d">
+    <button class="_99266285 _84f4e362" type="submit">Gå videre</button>
+    </div>
+  </div>
+
+      -------------------->
+
+
+
+  <div class="container">
+  <main id="center">
+    <div class="elm-mount-wrapper" *ngIf="visSkjema">
+
+      <div class="col-lg-9 col-sm-offset-2">
+        <form [formGroup]="skjema" (ngSubmit)="vedSubmit()">
+          <h1 class="_42c211d7">
+            Hva kan hjelpe deg med?
+          </h1>
+
+          <div *ngFor="let type of alleTyper; index as i" class="_82ccc47c">
+
+
+            <input class="form-check-input" (click)="velgtype(type.typeId)" type="radio" formControlName="type" value=" {{type.type}}" name="type" required>
+            <label class="_a95c63c3"> {{type.type}}</label>
+
+          </div>
+          <div class="_1c93c3b9">
+            <label> <span class="_b72ffc1e">Ikke skriv sensitiv informasjon i feltet, som bankkortnummer eller helseopplysninger. Vi spør senere, hvis vi trenger det.</span></label>
+            <textarea class="_aa55873d" formControlName="sporsmal" rows="4"></textarea>
+            <p class="alert alert-warning" [hidden]="skjema.controls.sporsmal.valid ||  !submitted">
+              Feltet må fylles ut
+            </p>
+          </div>
+
+          <div class="_1c93c3b9">
+            <h1 class="_42c211d7">
+              Hvordan kan vi kontakte deg?
+            </h1>
+            <div class="_82ccc47c">
+              <div class="_8ba87413">
+                <label class="_a95c63c3" for="first-name-input">Fornavn</label>
+                <div class="_206f47fe">
+                  <input class="_aa55873d  _aab6fe50" id="first-name-input" placeholder="" name="first-name-input" autocomplete="on">
+                  <p class="alert alert-warning" [hidden]="skjema.controls.sporsmal.valid ||  !submitted">
+                    Feltet må fylles ut
+                  </p>
+                </div>
+              </div>
+              <div class="_8ba87413">
+                <label class="_a95c63c3" for="last-name-input">Etternavn</label>
+                <div class="_206f47fe">
+                  <input class="_aa55873d  _aab6fe50" id="last-name-input" placeholder="" name="last-name-input" autocomplete="on">
+                  <p class="alert alert-warning" [hidden]="skjema.controls.sporsmal.valid ||  !submitted">
+                    Feltet må fylles ut
+                  </p>
+                </div>
+              </div>
+              <fieldset class="_8ba87413">
+
+                <div class="_206f47fe">
+
+                  <label class="_a95c63c3" for="first-name-input">Email</label>
+                  <input class="_aa55873d  _aab6fe50" id="email" placeholder="" type="email" name="" autocomplete="on">
+                  <p class="alert alert-warning" [hidden]="skjema.controls.sporsmal.valid ||  !submitted">
+                    Feltet må fylles ut
+                  </p>
+                </div>
+              </fieldset>
+            </div>
+          </div>
+          <div class="_65b9208d">
+            <button type="submit" *ngIf="skjemaStatus=='Registrere'" [disabled]="!skjema.valid" class="_99266285 _84f4e362">Send</button>
+            <button class="_99266285 _84f4e362" (click)="tilbakeTilListe()">Tilbake</button>
+
+
+          </div>
+        </form>
+      </div>
+    </div>
+</main>
   </div>
 
 
@@ -431,9 +324,22 @@
 
 
 
-  <!----------------------- Skjema for send ny spørsmål------------------------------------>
-  <div class="container">
-    <div class="col-sm-4 col-sm-offset-2" *ngIf="visSkjema">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!----------------------- Skjema for send ny spørsmål-----------------------------
       <div class="form">
         <form [formGroup]="skjema" (ngSubmit)="vedSubmit()">
 
@@ -443,7 +349,7 @@
             <div *ngFor="let type of alleTyper; index as i" class="form-check">
 
 
-              <input class="form-check-input" (click)="velgtype(type.typeId)"  type="radio" formControlName="type" value=" {{type.type}}" name="type" required>
+              <input class="form-check-input" (click)="velgtype(type.typeId)" type="radio" formControlName="type" value=" {{type.type}}" name="type" required>
               <label class="form-check-label"> {{type.type}}</label>
 
             </div>
@@ -466,8 +372,7 @@
     </div>
 
 
-
-
-
-  </div>
+      ------->
+  
+  
 </body>

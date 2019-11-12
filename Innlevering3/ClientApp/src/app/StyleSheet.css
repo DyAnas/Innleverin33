@@ -223,5 +223,254 @@ a.quicklink {
   background: inherit;
 }
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+ ._1c93c3b9 {
+  margin: 12px;
+}
+
+._1d619c5e {
+  height: 24px;
+  width: 24px;
+  background-image: url(https://view-components.cloud.nsb.no/resources/icons/info-inverted/midBlueContrast.svg);
+  background-repeat: no-repeat;
+  background-color: transparent;
+  border: 0;
+  transition: background-image 0.3s ease;
+  -webkit-transition: background-image 0.3s ease;
+}
+
+  ._1d619c5e:focus {
+    outline: none;
+    border: 0;
+  }
+
+._206f47fe {
+  position: relative;
+  margin-top: 12px;
+  margin-bottom: 12px;
+  width: 100%;
+}
+
+  ._206f47fe::before {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    content: '';
+    height: 2px;
+    width: 0;
+    border-bottom: 2px solid #00866E;
+  }
+
+  ._206f47fe:focus-within::before {
+    width: 100%;
+    transition: width .4s ease-out;
+  }
+
+  ._206f47fe:focus-within input {
+    border-bottom: 2px solid transparent;
+    outline: 0;
+  }
+
+._213f31b2 {
+  padding-bottom: 6px;
+}
+
+._42c211d7 {
+  font-size: 3rem;
+  line-height: 3.75rem;
+  font-weight: 500;
+  font-family: VyDisplay medium;
+}
+
+@media screen and (min-width: 756px) {
+  ._42c211d7 {
+    font-size: 3.375rem;
+    line-height: 4.125rem;
+  }
+}
+
+@media screen and (min-width: 1704px) {
+  ._42c211d7 {
+    font-size: 3.75rem;
+    line-height: 4.125rem;
+  }
+}
+
+._4a8fd7d9 {
+  position: relative;
+  display: flex;
+  overflow: hidden;
+}
+
+._65b9208d {
+  display: flex;
+  justify-content: center;
+}
+
+@media screen and (min-width: 756px) {
+  ._65b9208d {
+    justify-content: flex-start;
+  }
+}
+
+._82ccc47c {
+  max-width: 540px;
+}
+
+._84f4e362 {
+  margin-top: 36px;
+  width: 300px;
+}
+
+._8ba87413 {
+  margin-top: 48px;
+}
+
+._99266285 {
+  color: #606568;
+  background-color: #EFEFEF;
+  text-align: center;
+  padding: 0 42px;
+  height: 64px;
+  border-style: none;
+  cursor: default;
+  font-size: 1.25rem;
+  line-height: 1.875rem;
+  font-weight: 700;
+  font-family: VySans bold;
+}
+
+  ._99266285:hover {
+    outline: none;
+  }
+
+  ._99266285:active {
+    outline: none;
+  }
+
+  ._99266285:focus {
+    outline: none;
+  }
+
+._a9260cb7 {
+  margin-left: 6px;
+}
+
+._a95c63c3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  font-family: VySans bold;
+  display: block;
+  margin-bottom: 12px;
+}
+
+._aa55873d {
+  border-radius: 0;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  -ms-appearance: none;
+  -o-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 64px;
+  padding-top: 2px;
+  display: flex;
+  align-items: flex-start;
+  background-color: #F5F5F5;
+  text-indent: 12px;
+  color: #2B2B2C;
+  font-size: 1.25rem;
+  border: 0;
+  border-bottom: 2px solid #2B2B2C;
+}
+
+  ._aa55873d::-ms-clear {
+    display: none;
+  }
+
+  ._aa55873d::-ms-reveal {
+    display: none;
+  }
+
+  ._aa55873d:disabled {
+    background-color: #C7C9C7;
+  }
+
+  ._aa55873d::placeholder {
+    color: #606568;
+    opacity: 1;
+  }
+
+  ._aa55873d:focus {
+    outline: 1px solid #A7BCD6;
+    border-bottom: 2px solid #00866E;
+  }
+
+    ._aa55873d:focus::placeholder {
+      color: #606568;
+    }
+
+._aab6fe50 {
+  overflow-wrap: break-word;
+}
+
+._ae35e9f8 {
+  position: absolute;
+  width: 198px;
+  background-color: #FFFFFF;
+  top: 41px;
+  padding-left: 12px;
+  padding-right: 12px;
+  padding-bottom: 6px;
+  padding-top: 6px;
+  box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.18);
+  border: 1px solid #C7C9C7;
+  cursor: auto;
+  border-radius: 4px;
+  text-align: left;
+  z-index: 20;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 100ms, opacity 100ms;
+  -webkit-transition: visibility 100ms, opacity 100ms;
+  right: -90px;
+}
+
+  ._ae35e9f8::before {
+    content: '';
+    display: block;
+    top: 3px;
+    background-color: #FFFFFF;
+    width: 18px;
+    height: 18px;
+    position: absolute;
+    border-left: 1px solid #C7C9C7;
+    border-top: 1px solid #C7C9C7;
+    transform: rotate(45deg) translateX(-50%) translateY(-50%);
+  }
+
+  ._ae35e9f8::before {
+    right: 48%;
+  }
+
+._b72ffc1e {
+  font-size: 1rem;
+  line-height: 1.5rem;
+  font-weight: 400;
+  font-family: VySans, arial, sans-serif;
+}
+
+@media screen and (min-width: 1704px) {
+  ._b72ffc1e {
+    font-size: 1.125rem;
+    line-height: 1.5rem;
+  }
+}
+
+._e5511ed9 {
+  display: flex;
+}
 
 

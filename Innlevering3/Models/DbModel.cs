@@ -12,6 +12,7 @@ namespace Innlevering3.Models
         public string svar { get; set; }
         public int rating { get; set; }
         public int stemmer { get; set; }
+
         public virtual DBType type { get; set; }
 
     }
