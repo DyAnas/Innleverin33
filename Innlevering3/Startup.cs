@@ -23,7 +23,7 @@ namespace Innlevering3
         public void ConfigureServices(IServiceCollection services)
         {
             var connection = @"Server=(localdb)\mssqllocaldb;
-         Database= Innlevering233;Trusted_Connection=True;ConnectRetryCount=0";
+         Database= Innlevering11;Trusted_Connection=True;ConnectRetryCount=0";
 
 
             services.AddDbContext<SporsmalContext>

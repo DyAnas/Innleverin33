@@ -38,7 +38,7 @@ export class AppComponent {
 
 
     constructor(private _http: HttpClient, private fb: FormBuilder) {
-        let regexpEmail =new RegExp('^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$')
+        let regexpEmail =new RegExp('^[a-zåæøA-ZÅØÆ0-9._%+-]+@[a-zåøæA-ZÅØÆ0-9.-]+\.[a-zA-Z]{2,4}$')
         this.skjema = fb.group({
             Id: [""],
             sporsmal: [null, Validators.compose([Validators.required, Validators.pattern("^[a-zøæåA-ZØÆÅ. \\-]{2,200}$")])],
