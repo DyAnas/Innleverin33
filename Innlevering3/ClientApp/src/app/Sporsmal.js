@@ -12,4 +12,4 @@ var Isporsmal = /** @class */ (function () {
     return Isporsmal;
 }());
 exports.Isporsmal = Isporsmal;
-//# sourceMappingURL=sporsmal.js.map
+//# sourceMappingURL=Sporsmal.js.map

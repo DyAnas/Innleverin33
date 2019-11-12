@@ -87,10 +87,20 @@ namespace Innlevering3
         }
 
         nySpørsmål.type= funntype;
-           
+            var k = new DBkontakt()
+            {
+                sp = nySpørsmål,
+                fornavn = innspørsmål.fornavn,
+                etternavn = innspørsmål.etternavn,
+                epost = innspørsmål.epost,
+
+            };
+
+
         try
         {
             _context.sporsmals.Add(nySpørsmål);
+            _context.kontakts.Add(k);
             _context.SaveChanges();
         }
         catch (Exception feil)

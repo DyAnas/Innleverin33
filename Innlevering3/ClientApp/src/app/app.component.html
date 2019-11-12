@@ -49,20 +49,7 @@
           <p style="font-size:20px">Hva lurer du på? Velg tema og finn svar på alt.</p>
           <div style="margin-left:0px">
             <div *ngFor="let type of alleTyper; index as i" class="promotion-block col-xl-13 col-md-13 col-sm-13 col-lg-13 text-promotion-block text-promotion-block--color8">
-              <!--<div style="position:relative">
-                <a (click)="hentalleSporsmal(type.typeId)" class="quicklink link2" href="#">
-                  <span class="ql_caption">
-                    <span class="outer">
-                      <span class="inner">
-                        {{type.type}}
-                      </span>
-                    </span>
-                  </span>
-                  <span class="ql_top"></span>
-                  <span class="ql_bottom"></span>
-                </a>
-              </div>-->
-
+     
               <div id="home_quicklinks" style="float:left; position:center">
                 <a data-v-6c889e9f="" (click)="hentalleSporsmal(type.typeId)" class="quicklink link2" href="#">
                   <span class="ql_caption">
@@ -74,9 +61,6 @@
                   </span>
 
                 </a>
-
-
-
               </div>
             </div>
 
@@ -91,35 +75,8 @@
 
 
 
-  <!---
-  <div class="container">
-    <button class='btn btn-primary btn-lg btn-block' (click)='registrerSp()'>Spør</button>
-    <br />
-    <br />
-    <br />
-    <br />
-    <div *ngIf="VisType">
-      <div *ngIf="laster">
-        Laster kategori...
-      </div>
-      <div *ngFor="let type of alleTyper; index as i">
-        <button (click)="hentalleSporsmal(type.typeId)" type="button" class="btn btn-warning btn-lg btn-block">
-          {{type.type}}
+  
 
-
-        </button><br />
-
-        <br />
-
-        <br />
-
-
-      </div>
-
-    </div>
-
-  </div>
-  -->
   <!--------------------------------------Sporsmål----------------------------------------------------->
   <div class="container">
     <div class="col-lg-9">
@@ -189,54 +146,13 @@
           </div>
           <br />
           <br />
-          <button class="btn btn-default" (click)="tilbakeTilListe()">Tilbake</button>
+          <button class="_99266285 _84f4e362" (click)="tilbakeTilListe()">Tilbake</button>
         </div>
       </div>
     </div>
   </div>
 
-  <!----------------------------------------------------
-  <div class="container">
-  <div>
-    <div class="_8ba87413">
-    <label class="_a95c63c3" for="input--reference-code">Referansekode
-      <div class="_559a3387">
-      <span class="_b72ffc1e">Du finner referansekoden på kvitteringen du har fått.</span>
-        </div></label>
-    <div class="_206f47fe">
-      <input class="_aa55873d  _aab6fe50" id="input--reference-code" name="input--reference-code" autocomplete="on">
-      </div>
-      </div>
-    </div>
-  <div>
-    <div class="_8ba87413">
-    <label class="_a95c63c3" for="input--subject">Emne</label>
-    <div class="_206f47fe">
-      <input class="_aa55873d  _aab6fe50" id="input--subject" placeholder="" name="input--subject" autocomplete="on"></div>
-      </div>
-    </div>
-  <div class="_94fd33b1">
-    <label class="_a95c63c3" for="input--description">Hva kan vi hjelpe deg med?
-    <div class="_559a3387">
-      <span class="_b72ffc1e">Ikke skriv sensitiv informasjon i feltet, som bankkortnummer eller helseopplysninger. Vi spør senere, hvis vi trenger det.</span>
-      </div>
-      </label>
-    <div>
-    <div class="_b6e81b2b">
-      <textarea class="_6c7f21b7 _a12e50e3 " id="input--description" rows="6" cols="20" maxlength="1000" placeholder="Skriv her">
-     </textarea>
-      </div>
-    <div class="_50a5f9e1">0/1000
-      </div>
-      </div>
-    </div>
 
-  <div class="_65b9208d">
-    <button class="_99266285 _84f4e362" type="submit">Gå videre</button>
-    </div>
-  </div>
-
-      -------------------->
 
 
 
@@ -273,7 +189,7 @@
               <div class="_8ba87413">
                 <label class="_a95c63c3" for="first-name-input">Fornavn</label>
                 <div class="_206f47fe">
-                  <input class="_aa55873d  _aab6fe50" id="first-name-input" placeholder="" name="first-name-input" autocomplete="on">
+                  <input class="_aa55873d  _aab6fe50" id="first-name-input" placeholder="" formControlName="fornavn" autocomplete="on">
                   <p class="alert alert-warning" [hidden]="skjema.controls.sporsmal.valid ||  !submitted">
                     Feltet må fylles ut
                   </p>
@@ -282,7 +198,7 @@
               <div class="_8ba87413">
                 <label class="_a95c63c3" for="last-name-input">Etternavn</label>
                 <div class="_206f47fe">
-                  <input class="_aa55873d  _aab6fe50" id="last-name-input" placeholder="" name="last-name-input" autocomplete="on">
+                  <input class="_aa55873d  _aab6fe50" id="last-name-input" placeholder="" formControlName="etternavn" autocomplete="on">
                   <p class="alert alert-warning" [hidden]="skjema.controls.sporsmal.valid ||  !submitted">
                     Feltet må fylles ut
                   </p>
@@ -293,7 +209,7 @@
                 <div class="_206f47fe">
 
                   <label class="_a95c63c3" for="first-name-input">Email</label>
-                  <input class="_aa55873d  _aab6fe50" id="email" placeholder="" type="email" name="" autocomplete="on">
+                  <input class="_aa55873d  _aab6fe50" id="email" placeholder="" type="email" formControlName="epost" autocomplete="on">
                   <p class="alert alert-warning" [hidden]="skjema.controls.sporsmal.valid ||  !submitted">
                     Feltet må fylles ut
                   </p>
@@ -312,67 +228,4 @@
     </div>
 </main>
   </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <!----------------------- Skjema for send ny spørsmål-----------------------------
-      <div class="form">
-        <form [formGroup]="skjema" (ngSubmit)="vedSubmit()">
-
-          <div class="form-group">
-            <label class="poeng">Hva kan vi hjelpe deg med?</label>
-
-            <div *ngFor="let type of alleTyper; index as i" class="form-check">
-
-
-              <input class="form-check-input" (click)="velgtype(type.typeId)" type="radio" formControlName="type" value=" {{type.type}}" name="type" required>
-              <label class="form-check-label"> {{type.type}}</label>
-
-            </div>
-          </div>
-          <div class="form-group">
-            <label> <span class="_b72ffc1e">Ikke skriv sensitiv informasjon i feltet, som bankkortnummer eller helseopplysninger. Vi spør senere, hvis vi trenger det.</span></label>
-            <textarea class="form-control" formControlName="sporsmal" rows="4"></textarea>
-            <p class="alert alert-warning" [hidden]="skjema.controls.sporsmal.valid ||  !submitted">
-              Feltet må fylles ut
-            </p>
-          </div>
-
-          <div class="form-group">
-
-            <button type="submit" *ngIf="skjemaStatus=='Registrere'" [disabled]="!skjema.valid" class="btn btn-primary">Send</button>
-            <button class="btn btn-default" (click)="tilbakeTilListe()">Tilbake</button>
-          </div>
-        </form>
-      </div>
-    </div>
-
-
-      ------->
-  
-  
 </body>

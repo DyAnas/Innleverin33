@@ -38,6 +38,7 @@ export class AppComponent {
 
 
     constructor(private _http: HttpClient, private fb: FormBuilder) {
+        let regexpEmail =new RegExp('^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$')
         this.skjema = fb.group({
             Id: [""],
             sporsmal: [null, Validators.compose([Validators.required, Validators.pattern("^[a-zøæåA-ZØÆÅ. \\-]{2,200}$")])],
@@ -46,6 +47,10 @@ export class AppComponent {
             typeId: [""],
             stemmer: [0],
             type: [""],
+            fornavn: [null, Validators.compose([Validators.required, Validators.pattern("^[a-zøæåA-ZØÆÅ. \\-]{2,40}$")])],
+            etternavn: [null, Validators.compose([Validators.required, Validators.pattern("^[a-zøæåA-ZØÆÅ. \\-]{2,40}$")])],
+            epost: [null, Validators.compose([Validators.required, Validators.pattern(regexpEmail)])],
+            kundeId:[""],
         });
     }
 
@@ -175,6 +180,9 @@ export class AppComponent {
         sp.stemmer = 0;
         sp.svar = "";
         sp.typeId = this.types;
+        sp.fornavn = this.skjema.value.fornavn;
+        sp.etternavn = this.skjema.value.etternavn;
+        sp.epost = this.skjema.value.epost;
 
         const body: string = JSON.stringify(sp);
 

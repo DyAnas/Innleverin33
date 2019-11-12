@@ -16,6 +16,20 @@ namespace Innlevering3.Models
         public virtual DBType type { get; set; }
 
     }
+    public class DBkontakt
+    {
+        [Key]
+        public int Kundeid { get; set; }
+        public string fornavn { get; set; }
+        public string etternavn { get; set; }
+        public string epost { get; set; }
+        public virtual DBSporsmal sp { get; set; }
+
+    }
+
+
+
+
     public class DBType
     {
         [Key]
@@ -35,7 +49,7 @@ namespace Innlevering3.Models
         }
 
 
-
+        public DbSet<DBkontakt> kontakts { get; set; }
         public DbSet<DBType> TypeSporsmal { get; set; }
         public DbSet<DBSporsmal> sporsmals { get; set; }
 

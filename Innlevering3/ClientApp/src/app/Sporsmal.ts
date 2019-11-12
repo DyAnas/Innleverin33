@@ -8,6 +8,10 @@ export class sporsmal {
     rating: number;
     stemmer: number;
     type: string;
+    fornavn: string;
+    etternavn: string;
+    epost: string;
+    kundeId: number;
 
 }
 export class Isporsmal {
@@ -18,4 +22,8 @@ export class Isporsmal {
     rating: number;
     stemmer: number;
     type: string;
+    fornavn: string;
+    etternavn: string;
+    epost: string;
+    kundeId: number;
 }

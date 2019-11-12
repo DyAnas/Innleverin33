@@ -20,20 +20,22 @@ namespace Innlevering3.Models
         [Required]
         [RegularExpression("^[0-9]$")]
         public int stemmer { get; set; }
-       
-        
         public int TypeId { get; set; }
         [Required]
         [RegularExpression("^[a-zæøåA-ZÆØÅ. \\-]{2,40}$")]
         public string type { get; set; }
-        /*
-        public class typeSp
-        {
-            public int TypeId { get; set; }
-            [Required]
-            [RegularExpression("^[a-zæøåA-ZÆØÅ. \\-]{2,40}$")]
-            public string type { get; set; }
-            public List<sporsmals> sporsmal { get; set; }
-        }*/
+        public int Kundeid { get; set; }
+        [Required]
+        [RegularExpression("^[a-zæøåA-ZÆØÅ. \\-]{2,40}$")]
+        public string fornavn { get; set; }
+        [Required]
+        [RegularExpression("^[a-zæøåA-ZÆØÅ. \\-]{2,40}$")]
+        public string etternavn { get; set; }
+        [Required]
+        [RegularExpression("^[a-zæøåA-ZÆØÅ. \\-]{2,40}$")]
+        public string epost { get; set; }
+
+
+     
     }
 }
