@@ -18,7 +18,7 @@
         }
       }
   </script>
-
+  <!--
   <style>
 
     .counter {
@@ -241,145 +241,227 @@
       background: inherit;
     }
   </style>
+      -->
+  <div class="container">
+    <div id="home_quicklinks">
+      <a (click)='registrerSp()' class="quicklink link1" href="#">
+        <span class="ql_caption">
+          <span class="outer">
+            <span class="inner">
+              <span>Hjelp og kontakt</span>
+            </span>
+          </span>
+        </span>
 
-  <div id="home_quicklinks">
+      </a>
+    </div>
+  </div>
+
+
+
+
+
+  <div class="col-lg-13">
+    <div class="container">
+
+      <div id="home_quicklinks">
+        <div *ngIf="VisType">
+
+          <div *ngIf="laster">
+            Laster kategori...
+          </div>
+          <h1>Spørsmål og svar</h1>
+          <p style="font-size:20px">Hva lurer du på? Velg tema og finn svar på alt.</p>
+          <div style="margin-left:0px">
+            <div *ngFor="let type of alleTyper; index as i" class="promotion-block col-xl-13 col-md-13 col-sm-13 col-lg-13 text-promotion-block text-promotion-block--color8">
+              <!--<div style="position:relative">
+      <a (click)="hentalleSporsmal(type.typeId)" class="quicklink link2" href="#">
+        <span class="ql_caption">
+          <span class="outer">
+            <span class="inner">
+              {{type.type}}
+            </span>
+          </span>
+        </span>
+        <span class="ql_top"></span>
+        <span class="ql_bottom"></span>
+      </a>
+    </div>-->
+
+              <div id="home_quicklinks" style="float:left; position:center">
+                <a data-v-6c889e9f="" (click)="hentalleSporsmal(type.typeId)" class="quicklink link2" href="#">
+                  <span class="ql_caption">
+                    <span class="outer">
+                      <span class="inner">
+                        <span>   {{type.type}}</span>
+                      </span>
+                    </span>
+                  </span>
+
+                </a>
+
+
+
+              </div>
+            </div>
+
+
+          </div>
+          </div>
+
+        </div>
+
+    </div>
+  </div>
+
+
+
+  <!---
+  <div class="container">
+    <button class='btn btn-primary btn-lg btn-block' (click)='registrerSp()'>Spør</button>
+    <br />
+    <br />
+    <br />
+    <br />
     <div *ngIf="VisType">
       <div *ngIf="laster">
         Laster kategori...
       </div>
       <div *ngFor="let type of alleTyper; index as i">
-        <div style="position:relative">
-          <a (click)="hentalleSporsmal(type.typeId)" class="quicklink link2" href="#">
-            <span class="ql_caption">
-              <span class="outer">
-                <span class="inner">
-                  {{type.type}}
-                </span>
-              </span>
-            </span>
-            <span class="ql_top"></span>
-            <span class="ql_bottom"></span>
-          </a>
-        </div>
+        <button (click)="hentalleSporsmal(type.typeId)" type="button" class="btn btn-warning btn-lg btn-block">
+          {{type.type}}
+
+
+        </button><br />
+
+        <br />
+
+        <br />
+
+
       </div>
 
     </div>
 
   </div>
-
-  
-
-
-  <div id="home_quicklinks">
-    <a  (click)='registrerSp()' class="quicklink link1" href="#">
-      <span class="ql_caption">
-        <span class="outer">
-          <span class="inner">
-            <h2>Spør</h2>
-          </span>
-        </span>
-      </span>
-      <span class="ql_top"></span>
-      <span class="ql_bottom"></span>
-    </a>
-
-
-
-    </div>
-
-    <!---
-      <div class="container">
-        <button class='btn btn-primary btn-lg btn-block' (click)='registrerSp()'>Spør</button>
-        <br />
-        <br />
-        <br />
-        <br />
-        <div *ngIf="VisType">
-          <div *ngIf="laster">
-            Laster kategori...
-          </div>
-          <div *ngFor="let type of alleTyper; index as i">
-            <button (click)="hentalleSporsmal(type.typeId)" type="button" class="btn btn-warning btn-lg btn-block">
-              {{type.type}}
-
-
-            </button><br />
-
-            <br />
-
-            <br />
-
-
-          </div>
-
-        </div>
-
-      </div>
-      -->
-    <!--------------------------------------Sporsmål----------------------------------------------------->
-
-    <div class="col-lg-8">
+  -->
+  <!--------------------------------------Sporsmål----------------------------------------------------->
+  <div class="container">
+    <div class="col-lg-9">
       <div *ngIf="VisBilSp" class="tab-content" id="faq-tab-content">
         <div class="tab-pane show active" id="tab1" role="tabpanel" aria-labelledby="tab1">
           <div class="accordion" id="accordion-tab-1">
             <div *ngIf="bil">
               <h1>Billetter spørsmål</h1>
+              <br />
             </div>
             <div *ngIf="en">
-              <h1>Endringerspørsmål...<</h1>
+              <h1>Endringerspørsmål</h1>
+              <br />
             </div>
             <div *ngIf="rut">
               <h1>Ruter spørsmål</h1>
+              <br />
             </div>
-            <div *ngFor="let etSp of alleSporsmal; index as i" class="card">
-              <div class="card-header" id="accordion-tab-1-heading-1">
-                <h5>
-                  <button (click)="hentSvar(i)" class="btn btn-lg" type="button" data-toggle="collapse" data-target="#accordion-tab-1-content-1" aria-expanded="false" aria-controls="accordion-tab-1-content-1">  {{etSp.sporsmal}}</button>
-                </h5>
-              </div>
-              <div *ngIf="visSvar===i" class="collapse show" id="accordion-tab-1-content-1" aria-labelledby="accordion-tab-1-heading-1" data-parent="#accordion-tab-1">
-                <div class="card-body">
-                  <p>{{etSp.svar}}</p>
+          
+              <div *ngFor="let etSp of alleSporsmal; index as i" class="card">
+                <div class="card-header" id="accordion-tab-1-heading-1">
+                  <h5>
+                    <button (click)="hentSvar(i)" class="btn btn-lg" type="button" data-toggle="collapse" data-target="#accordion-tab-1-content-1" aria-expanded="false" aria-controls="accordion-tab-1-content-1">  {{etSp.sporsmal}}</button>
+                  </h5>
+                </div>
+                <div *ngIf="visSvar===i" class="collapse show" id="accordion-tab-1-content-1" aria-labelledby="accordion-tab-1-heading-1" data-parent="#accordion-tab-1">
+                  <div class="card-body">
+                    <p>{{etSp.svar}}</p>
 
-                  <div class="row">
-                    <div class="col-lg-1 col-md-3 col-sm-3 col-xs-12">
-                      <div class="poeng">
-                        <button (click)="stemSpOpp(etSp.id,etSp.typeId)" class="btn btn-primary glyphicon glyphicon-thumbs-up" disable-on-click data-disable-text="Saving..."><i class="material-icons">thumb_up</i></button>
+                    <div class="row">
+                      <div class="col-lg-1 col-md-3 col-sm-3 col-xs-12">
+                        <div class="poeng">
+                          <button (click)="stemSpOpp(etSp.id,etSp.typeId)" class="btn btn-outline-primary glyphicon glyphicon-thumbs-up" disable-on-click data-disable-text="Saving..."><i class="material-icons">thumb_up</i></button>
 
+                        </div>
                       </div>
-                    </div>
 
-                    <div class="col-lg-1 col-md-3 col-sm-3 col-xs-12">
-                      <div class="poeng">
+                      <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
+                        <div class="poeng">
 
-                        <button (click)="stemSpned(etSp.id,etSp.typeId)" class="btn btn-danger glyphicon glyphicon-thumbs-down" disable-on-click data-disable-text="Saving..."><i class="material-icons">thumb_down</i></button>
+                          <button [disabled]="isUnchanged" (click)="stemSpned(etSp.id,etSp.typeId)" class="btn btn-outline-danger glyphicon glyphicon-thumbs-down" disable-on-click data-disable-text="Saving..."><i class="material-icons">thumb_down</i></button>
+                        </div>
                       </div>
-                    </div>
 
 
 
-                    <div class="col-lg-1 col-md-3 col-sm-3 col-xs-12">
-                      <div class="poeng">
-                        <p class="counter-count">{{etSp.rating}}</p>
-                        <p class="poeng-p">poeng</p>
+                      <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
+                        <div class="poeng">
+                          <p class="counter-count">{{etSp.rating}}</p>
+                          <p class="poeng-p">poeng</p>
+                        </div>
                       </div>
-                    </div>
 
-                    <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
-                      <div class="poeng">
-                        <p class="counter-count">{{etSp.stemmer}}</p>
-                        <p class="poeng-p">stemmer</p>
+                      <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
+                        <div class="poeng">
+                          <p class="counter-count">{{etSp.stemmer}}</p>
+                          <p class="poeng-p">stemmer</p>
+                        </div>
                       </div>
+
                     </div>
 
                   </div>
-
                 </div>
               </div>
-            </div>
+            
           </div>
+          <br />
+          <br />
           <button class="btn btn-default" (click)="tilbakeTilListe()">Tilbake</button>
         </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+  <!----------------------- Skjema for send ny spørsmål------------------------------------>
+  <div class="container">
+    <div class="col-sm-4 col-sm-offset-2" *ngIf="visSkjema">
+      <div class="form">
+        <form [formGroup]="skjema" (ngSubmit)="vedSubmit()">
+
+          <div class="form-group">
+            <label class="poeng">Hva kan vi hjelpe deg med?</label>
+
+            <div *ngFor="let type of alleTyper; index as i" class="form-check">
+
+
+              <input class="form-check-input" (click)="velgtype(type.typeId)"  type="radio" formControlName="type" value=" {{type.type}}" name="type" required>
+              <label class="form-check-label"> {{type.type}}</label>
+
+            </div>
+          </div>
+          <div class="form-group">
+            <label> <span class="_b72ffc1e">Ikke skriv sensitiv informasjon i feltet, som bankkortnummer eller helseopplysninger. Vi spør senere, hvis vi trenger det.</span></label>
+            <textarea class="form-control" formControlName="sporsmal" rows="4"></textarea>
+            <p class="alert alert-warning" [hidden]="skjema.controls.sporsmal.valid ||  !submitted">
+              Feltet må fylles ut
+            </p>
+          </div>
+
+          <div class="form-group">
+
+            <button type="submit" *ngIf="skjemaStatus=='Registrere'" [disabled]="!skjema.valid" class="btn btn-primary">Send</button>
+            <button class="btn btn-default" (click)="tilbakeTilListe()">Tilbake</button>
+          </div>
+        </form>
       </div>
     </div>
 
@@ -387,43 +469,5 @@
 
 
 
-
-
-
-
-
-
-
-    <!----------------------- Skjema------------------------------------>
-    <div class="col-sm-4 col-sm-offset-2" *ngIf="visSkjema">
-      <form [formGroup]="skjema" (ngSubmit)="vedSubmit()">
-
-        <div class="form-group">
-          <label>Hva kan vi hjelpe deg med?</label>
-
-          <div *ngFor="let type of alleTyper; index as i">
-
-
-            <input (click)="velgtype(type.typeId)" style="position:initial" type="radio" formControlName="type" value=" {{type.type}}" name="type" required>
-            <label class=""> {{type.type}}</label>
-
-          </div>
-        </div>
-        <div class="form-group">
-          <label>Skriv din spørsmål</label>
-          <textarea class="form-control" formControlName="sporsmal" rows="4"></textarea>
-          <p class="alert alert-warning" [hidden]="skjema.controls.sporsmal.valid ||  !submitted">
-            Feltet må fylles ut
-          </p>
-        </div>
-
-        <div class="form-group">
-
-          <button type="submit" *ngIf="skjemaStatus=='Registrere'" [disabled]="!skjema.valid" class="btn btn-primary">Registrer</button>
-          <button class="btn btn-default" (click)="tilbakeTilListe()">Tilbake</button>
-        </div>
-      </form>
-    </div>
-
-
+  </div>
 </body>

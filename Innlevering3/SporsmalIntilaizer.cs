@@ -29,7 +29,7 @@ namespace Innlevering3
 
             var t1 = new DBType { type = "Billetter", sporsmal = hentspørsmål1() };
             var t2 = new DBType { type = "Endring", sporsmal = hentspørsmål2() };
-            var t3 = new DBType { type = "ruter", sporsmal = hentspørsmål3() };
+            var t3 = new DBType { type = "Ruter", sporsmal = hentspørsmål3() };
 
             typeSpørmål.Add(t1);
             typeSpørmål.Add(t2);

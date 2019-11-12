@@ -1,4 +1,4 @@
-<style >
+
 
 .counter {
   background-color: #eaecf0;
@@ -9,10 +9,13 @@
   margin-top: 20px;
   margin-bottom: 20px;
 }
-
+.form{
+  font-family:Arial, sans-serif;
+  font-size:18px;
+}
 .counter-count {
   font-size: 16px;
-  background-color: #00b3e7;
+  background-color: #09a98b;
   border-radius: 50%;
   position: relative;
   color: #ffffff;
@@ -39,15 +42,15 @@
 }
 
 a.quicklink.link1 {
-  background: #fc6719;
+  background: #CCEAE4;
 }
 
 a.quicklink {
   display: inline-block;
-  width: 302px;
+  width: 300px;
   height: 173px;
   position: relative;
-  margin: 90px 30px;
+  margin: 60px 30px;
 }
 
   a.quicklink .ql_caption {
@@ -115,7 +118,7 @@ a.quicklink.link1 .ql_bottom {
 }
 
 a.quicklink.link2 {
-  background: #fcf4e7;
+  background: #dce4ef;
 }
 
   a.quicklink.link2 .ql_top {
@@ -221,4 +224,4 @@ a.quicklink {
 }
 
 
-</style >
+

@@ -10,6 +10,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
+    styleUrls: ['./StyleSheet.css']
 
 })
 export class AppComponent {
@@ -33,7 +34,7 @@ export class AppComponent {
     bil: boolean;
     en: boolean;
     rut: boolean;
- 
+    visKontak: boolean;
 
 
     constructor(private _http: HttpClient, private fb: FormBuilder) {
@@ -66,8 +67,9 @@ export class AppComponent {
                    // this.VisType = true;
                     this.alleTyper = typer;
                     this.laster = false;
-                    this.VisBilSp = false;
-                    this.ViRuSp = false;
+                    this.visKontak = false;
+                    //this.VisBilSp = false;
+                    //this.ViRuSp = false;
                 },
                 error => alert(error)
             );
@@ -83,7 +85,7 @@ export class AppComponent {
                     this.laster = false;
                     if (i == 1) {
 
-
+                        this.visKontak = false;
                         this.bil = true;
                         this.rut = false;
                         this.en = false;
@@ -95,7 +97,7 @@ export class AppComponent {
                     }
                     else if (i == 2) {
                         this.VisType = false;
-
+                        this.visKontak = false;
                         this.bil = false;
                         this.rut = false;
                         this.en = true;
@@ -105,7 +107,7 @@ export class AppComponent {
 
                     }
                     else if (i == 3) {
-
+                        this.visKontak = false;
                         this.bil = false;
                         this.rut = true;;
                         this.en = false;
@@ -121,19 +123,7 @@ export class AppComponent {
 
 
     }
-    /*hentSvar(i: number) {
-        i = 0;
-        i = i + 1;
-         this._http.get("api/Svar/" + i)
-             .subscribe(
-                 sp => {
- 
-                     this.etSv.svar = sp.toString();
-                     this.visSvar = true;
-                     
-                 }
-             );
-     }*/
+
     hentSvar(i) {
 
         this.visSvar = i;
@@ -161,9 +151,11 @@ export class AppComponent {
     registrerSp() {
         this.visSkjema = true;
         this.VisType = false;
-        this.VisEnSp = false;
+     //   this.VisEnSp = false;
         this.VisBilSp = false;
-        this.ViRuSp = false;
+     //   this.ViRuSp = false;
+
+        this.visKontak = false;
         this.skjema.markAsPristine();
         this.hentAlletyper();
         this.skjemaStatus = "Registrere";
